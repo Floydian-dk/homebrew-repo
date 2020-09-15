@@ -57,7 +57,7 @@ class Php < Formula
   #depends_on "unixodbc" #We don't use ODBC on the server.
 
   # Dependencies for PECL modules
-  depends_on "igbinary"
+  #depends_on "igbinary"
   depends_on "imagemagick"
   depends_on "mcrypt"
   depends_on "redis"
