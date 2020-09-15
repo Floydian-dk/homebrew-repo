@@ -166,8 +166,6 @@ class Php < Formula
       --with-gettext=#{Formula["gettext"].opt_prefix}
       --with-gmp=#{Formula["gmp"].opt_prefix}
       --with-iconv#{headers_path}
-      --with-imap
-      --with-imap-ssl
       --with-jpeg
       --with-kerberos
       --with-ldap=#{Formula["openldap"].opt_prefix}
