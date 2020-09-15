@@ -44,7 +44,7 @@ class PhpAT72 < Formula
   depends_on "oniguruma"
   depends_on "openldap"
   depends_on "openssl@1.1"
-  depends_on "pcre2"
+  depends_on "pcre"
   depends_on "tidy-html5"
   depends_on "webp"
 
