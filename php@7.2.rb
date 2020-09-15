@@ -144,7 +144,7 @@ class PhpAT72 < Formula
       --enable-xmlreader
       --enable-xmlwriter
       --enable-zip
-      --with-bz2#{Formula["bzip2"].opt_prefix}
+      --with-bz2=#{Formula["bzip2"].opt_prefix}
       --with-curl=#{Formula["curl-openssl"].opt_prefix}
       --with-external-pcre
       --with-fpm-user=_www
