@@ -139,9 +139,9 @@ class PhpAT72 < Formula
       --with-fpm-group=_www
       --with-libxml-dir#{headers_path}
       --with-mhash#{headers_path}
-      --with-pcre-regex#{headers_path}
+      --with-pcre-regex=#{Formula["pcre"].opt_prefix}
       --without-pear
-      --with-zlib#{headers_path}
+      --with-zlib#{Formula["libzip"].opt_prefix}
     ]
 
     system "./configure", *args
