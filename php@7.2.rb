@@ -131,7 +131,7 @@ class PhpAT72 < Formula
       --enable-opcache-file
       --enable-pdo
       --enable-phar
-      --enble-posix
+      --enable-posix
       --enable-session
       --enable-shmop
       --enable-simplexml
