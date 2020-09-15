@@ -138,8 +138,8 @@ class PhpAT72 < Formula
       --with-bz2=#{Formula["bzip2"].opt_prefix}
       --with-fpm-user=_www
       --with-fpm-group=_www
-      --with-libxml-dir#{headers_path}
-      --with-mhash#{headers_path}
+      --with-libxml-dir=/opt/local
+      --with-mhash=/opt/local
       --with-pcre-regex=#{Formula["pcre"].opt_prefix}
       --without-pear
       --with-zlib=#{Formula["zlib"].opt_prefix}
