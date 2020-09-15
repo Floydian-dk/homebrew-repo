@@ -36,7 +36,7 @@ class Php < Formula
   depends_on "curl-openssl"
   depends_on "freetype"
   #depends_on "freetds" #Libraries to talk to Microsoft SQL Server and Sybase databases
-  #depends_on "gd" #Not sure this is required. GD should be included in PHP
+  depends_on "gd" #Not sure this is required. GD should be included in PHP
   depends_on "geoip"
   depends_on "gettext"
   depends_on "glib"
