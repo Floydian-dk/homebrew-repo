@@ -1,21 +1,21 @@
-class PhpAT73 < Formula
+class PhpAT72 < Formula
   desc "General-purpose scripting language"
   homepage "https://www.php.net/"
   # Should only be updated if the new version is announced on the homepage, https://www.php.net/
-  url "https://www.php.net/distributions/php-7.3.22.tar.xz"
-  mirror "https://fossies.org/linux/www/php-7.3.22.tar.xz"
-  sha256 "0e66606d3bdab5c2ae3f778136bfe8788e574913a3d8138695e54d98562f1fb5"
+  url "https://www.php.net/distributions/php-7.2.33.tar.xz"
+  mirror "https://fossies.org/linux/www/php-7.2.33.tar.xz"
+  sha256 "0f160a3483ffce36be5962fab7bcf09d605ee66c5707df83e4195cb796bbb03a"
   license "PHP-3.01"
 
   bottle do
-    sha256 "7ac04487f43382329a46499cb6c789994c1c9bcb501fd024d55b0ac4c71a7063" => :catalina
-    sha256 "a700b78f4635f46ebbdc4c56d85ee3421e4bdc523fcf9fbecfad230b45ab225d" => :mojave
-    sha256 "d4847acd6ce4c05f35840e65979b4512a513d5afcc0f29b62b91604bb9d015a6" => :high_sierra
+    sha256 "b86f79fa92eee0dba80c2a5fdc958613a013db6e9d4f9a902e41afe3f3a10561" => :catalina
+    sha256 "2c9d66ca8e40ccfd9f58eed7775a248d061b539551c9cdc105c4e80df5be48d0" => :mojave
+    sha256 "88bdd9f91682b8cd1cd47214976cf443a7e22485e361f8036e54c6d2b63ed37d" => :high_sierra
   end
 
   keg_only :versioned_formula
 
-  deprecate! date: "2021-12-06", because: :versioned_formula
+  deprecate! date: "2020-11-30", because: :versioned_formula
 
   depends_on "httpd" => [:build, :test]
   depends_on "pkg-config" => :build
@@ -71,7 +71,7 @@ class PhpAT73 < Formula
 
       # apxs will interpolate the @ in the versioned prefix: https://bz.apache.org/bugzilla/show_bug.cgi?id=61944
       s.gsub! "LIBEXECDIR='$APXS_LIBEXECDIR'",
-      "LIBEXECDIR='" + "#{lib}/httpd/modules".gsub("@", "\\@") + "'"
+              "LIBEXECDIR='" + "#{lib}/httpd/modules".gsub("@", "\\@") + "'"
     end
 
     # Update error message in apache sapi to better explain the requirements
@@ -193,11 +193,6 @@ class PhpAT73 < Formula
       "openssl.cafile = \"#{openssl.pkgetc}/cert.pem\""
     inreplace "php.ini-development", /; ?openssl\.capath=/,
       "openssl.capath = \"#{openssl.pkgetc}/certs\""
-
-    # php 7.3 known bug
-    # SO discussion: https://stackoverflow.com/a/53709484/791609
-    # bug report: https://bugs.php.net/bug.php?id=77260
-    inreplace "php.ini-development", ";pcre.jit=1", "pcre.jit=0"
 
     config_files = {
       "php.ini-development"   => "php.ini",
