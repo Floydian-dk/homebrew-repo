@@ -41,6 +41,7 @@ class PhpAT72 < Formula
   #depends_on "libpq"
   depends_on "libsodium"
   depends_on "libzip"
+  depends_on "zlib"
   depends_on "oniguruma"
   depends_on "openldap"
   depends_on "openssl@1.1"
@@ -141,7 +142,7 @@ class PhpAT72 < Formula
       --with-mhash#{headers_path}
       --with-pcre-regex=#{Formula["pcre"].opt_prefix}
       --without-pear
-      --with-zlib=#{Formula["libzip"].opt_prefix}
+      --with-zlib=#{Formula["zlib"].opt_prefix}
     ]
 
     system "./configure", *args
