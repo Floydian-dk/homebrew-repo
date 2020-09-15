@@ -1,5 +1,5 @@
 class Php < Formula
-  desc "General-purpose scripting language"
+  desc "General-purpose scripting language. Custom version for FLOYD Interactive."
   homepage "https://www.php.net/"
   # Should only be updated if the new version is announced on the homepage, https://www.php.net/
   url "https://www.php.net/distributions/php-7.4.10.tar.xz"
