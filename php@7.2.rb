@@ -141,7 +141,7 @@ class PhpAT72 < Formula
       --with-mhash#{headers_path}
       --with-pcre-regex=#{Formula["pcre"].opt_prefix}
       --without-pear
-      --with-zlib#{Formula["libzip"].opt_prefix}
+      --with-zlib=#{Formula["libzip"].opt_prefix}
     ]
 
     system "./configure", *args
