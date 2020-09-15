@@ -125,6 +125,7 @@ class PhpAT72 < Formula
       --enable-gd
       --enable-intl
       --enable-json
+      --enable-libxml
       --enable-mbregex
       --enable-mbstring
       --enable-mysqlnd
