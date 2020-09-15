@@ -1,5 +1,5 @@
 class PhpAT72 < Formula
-  desc "General-purpose scripting language"
+  desc "General-purpose scripting language.  Custom version for FLOYD Interactive."
   homepage "https://www.php.net/"
   # Should only be updated if the new version is announced on the homepage, https://www.php.net/
   url "https://www.php.net/distributions/php-7.2.33.tar.xz"
@@ -25,26 +25,30 @@ class PhpAT72 < Formula
   depends_on "argon2"
   depends_on "aspell"
   depends_on "autoconf"
+  depends_on "bzip2"
   depends_on "curl-openssl"
-  depends_on "freetds"
+  #depends_on "freetds" #Libraries to talk to Microsoft SQL Server and Sybase databases
   depends_on "freetype"
+  depends_on "gd"
+  depends_on "geoip"
   depends_on "gettext"
   depends_on "glib"
   depends_on "gmp"
   depends_on "icu4c"
+  depends_on "krb5"
   depends_on "jpeg"
   depends_on "libpng"
-  depends_on "libpq"
+  #depends_on "libpq"
   depends_on "libsodium"
   depends_on "libzip"
+  depends_on "oniguruma"
   depends_on "openldap"
   depends_on "openssl@1.1"
-  depends_on "sqlite"
+  depends_on "pcre2"
   depends_on "tidy-html5"
-  depends_on "unixodbc"
   depends_on "webp"
 
-  uses_from_macos "bzip2"
+  #uses_from_macos "bzip2"
   uses_from_macos "libedit"
   uses_from_macos "libxml2"
   uses_from_macos "libxslt"
@@ -108,33 +112,41 @@ class PhpAT72 < Formula
       --with-config-file-path=#{config_path}
       --with-config-file-scan-dir=#{config_path}/conf.d
       --with-pear=#{pkgshare}/pear
+      --with-apxs2=#{Formula["httpd"].opt_bin}/apxs
+      --disable-all
+      --enable-fpm
       --enable-bcmath
       --enable-calendar
-      --enable-dba
-      --enable-dtrace
+      --enable-ctype
+      --enable-dom
       --enable-exif
-      --enable-ftp
-      --enable-fpm
+      --enable-fileinfo
+      --enable-filter
+      --enable-gd
       --enable-intl
+      --enable-json
       --enable-mbregex
       --enable-mbstring
       --enable-mysqlnd
       --enable-opcache-file
-      --enable-pcntl
-      --enable-phpdbg
-      --enable-phpdbg-readline
-      --enable-phpdbg-webhelper
+      --enable-pdo
+      --enable-phar
+      --enble-posix
+      --enable-session
       --enable-shmop
-      --enable-soap
+      --enable-simplexml
       --enable-sockets
       --enable-sysvmsg
       --enable-sysvsem
       --enable-sysvshm
-      --enable-wddx
+      --enable-tokenizer
+      --enable-xml
+      --enable-xmlreader
+      --enable-xmlwriter
       --enable-zip
-      --with-apxs2=#{Formula["httpd"].opt_bin}/apxs
-      --with-bz2#{headers_path}
+      --with-bz2#{Formula["bzip2"].opt_prefix}
       --with-curl=#{Formula["curl-openssl"].opt_prefix}
+      --with-external-pcre
       --with-fpm-user=_www
       --with-fpm-group=_www
       --with-freetype-dir=#{Formula["freetype"].opt_prefix}
@@ -145,7 +157,6 @@ class PhpAT72 < Formula
       --with-icu-dir=#{Formula["icu4c"].opt_prefix}
       --with-jpeg-dir=#{Formula["jpeg"].opt_prefix}
       --with-kerberos#{headers_path}
-      --with-layout=GNU
       --with-ldap=#{Formula["openldap"].opt_prefix}
       --with-ldap-sasl#{headers_path}
       --with-libxml-dir#{headers_path}
@@ -154,22 +165,14 @@ class PhpAT72 < Formula
       --with-mhash#{headers_path}
       --with-mysql-sock=/tmp/mysql.sock
       --with-mysqli=mysqlnd
-      --with-ndbm#{headers_path}
       --with-openssl=#{Formula["openssl@1.1"].opt_prefix}
       --with-password-argon2=#{Formula["argon2"].opt_prefix}
-      --with-pdo-dblib=#{Formula["freetds"].opt_prefix}
       --with-pdo-mysql=mysqlnd
-      --with-pdo-odbc=unixODBC,#{Formula["unixodbc"].opt_prefix}
-      --with-pdo-pgsql=#{Formula["libpq"].opt_prefix}
-      --with-pdo-sqlite=#{Formula["sqlite"].opt_prefix}
-      --with-pgsql=#{Formula["libpq"].opt_prefix}
       --with-pic
       --with-png-dir=#{Formula["libpng"].opt_prefix}
       --with-pspell=#{Formula["aspell"].opt_prefix}
       --with-sodium=#{Formula["libsodium"].opt_prefix}
-      --with-sqlite3=#{Formula["sqlite"].opt_prefix}
       --with-tidy=#{Formula["tidy-html5"].opt_prefix}
-      --with-unixODBC=#{Formula["unixodbc"].opt_prefix}
       --with-webp-dir=#{Formula["webp"].opt_prefix}
       --with-xmlrpc
       --with-xsl#{headers_path}
