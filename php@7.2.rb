@@ -116,67 +116,31 @@ class PhpAT72 < Formula
       --disable-all
       --enable-fpm
       --enable-bcmath
-      --enable-calendar
+      --enable-cgi
+      --enable-cli
       --enable-ctype
       --enable-dom
       --enable-exif
       --enable-fileinfo
       --enable-filter
-      --enable-gd
-      --enable-intl
+      --enable-hash
       --enable-json
       --enable-libxml
-      --enable-mbregex
-      --enable-mbstring
-      --enable-mysqlnd
-      --enable-opcache-file
       --enable-pdo
       --enable-phar
-      --enable-posix
       --enable-session
-      --enable-shmop
       --enable-simplexml
-      --enable-sockets
-      --enable-sysvmsg
-      --enable-sysvsem
-      --enable-sysvshm
       --enable-tokenizer
       --enable-xml
       --enable-xmlreader
       --enable-xmlwriter
-      --enable-zip
       --with-bz2=#{Formula["bzip2"].opt_prefix}
-      --with-curl=#{Formula["curl-openssl"].opt_prefix}
-      --with-external-pcre
       --with-fpm-user=_www
       --with-fpm-group=_www
-      --with-freetype-dir=#{Formula["freetype"].opt_prefix}
-      --with-gd
-      --with-gettext=#{Formula["gettext"].opt_prefix}
-      --with-gmp=#{Formula["gmp"].opt_prefix}
-      --with-iconv#{headers_path}
-      --with-icu-dir=#{Formula["icu4c"].opt_prefix}
-      --with-jpeg-dir=#{Formula["jpeg"].opt_prefix}
-      --with-kerberos#{headers_path}
-      --with-ldap=#{Formula["openldap"].opt_prefix}
-      --with-ldap-sasl#{headers_path}
       --with-libxml-dir#{headers_path}
-      --with-libedit#{headers_path}
-      --with-libzip
       --with-mhash#{headers_path}
-      --with-mysql-sock=/tmp/mysql.sock
-      --with-mysqli=mysqlnd
-      --with-openssl=#{Formula["openssl@1.1"].opt_prefix}
-      --with-password-argon2=#{Formula["argon2"].opt_prefix}
-      --with-pdo-mysql=mysqlnd
-      --with-pic
-      --with-png-dir=#{Formula["libpng"].opt_prefix}
-      --with-pspell=#{Formula["aspell"].opt_prefix}
-      --with-sodium=#{Formula["libsodium"].opt_prefix}
-      --with-tidy=#{Formula["tidy-html5"].opt_prefix}
-      --with-webp-dir=#{Formula["webp"].opt_prefix}
-      --with-xmlrpc
-      --with-xsl#{headers_path}
+      --with-pcre-regex#{headers_path}
+      --without-pear
       --with-zlib#{headers_path}
     ]
 
