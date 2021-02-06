@@ -19,7 +19,7 @@ class Postfix < Formula
       -DHAS_SSL
       -DHAS_PCRE
       -DUSE_SASL_AUTH
-      -DDEF_SERVER_SASL_TYPE=\"dovecot\"
+      -DDEF_SERVER_SASL_TYPE=dovecot
       -DHAS_MYSQL -I/usr/local/include/mysql'
     ]
 
@@ -51,7 +51,7 @@ class Postfix < Formula
     ]
 
     system "make", "makefiles", *ccargs, *auxlibs
-    system "/bin/sh postfix-install", *args2
+    system "/bin/sh", "postfix-install", *args2
 
   end
 
