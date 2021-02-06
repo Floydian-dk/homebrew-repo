@@ -14,8 +14,7 @@ class Postfix < Formula
 
   def install
     ccargs = %W[
-      CCARGS='
-      -DNO_PCRE
+      CCARGS='-DNO_PCRE
       -DUSE_TLS
       -DHAS_SSL
       -DHAS_PCRE
@@ -25,10 +24,10 @@ class Postfix < Formula
     ]
 
     auxlibs =%W[
-      -lpcre
+      AUXLIBS='-lpcre
       -lssl
       -lcrypto
-      -L/usr/local/lib -lmysqlclient -lz -lm
+      -L/usr/local/lib -lmysqlclient -lz -lm'
     ]
 
     args2 = %W[
