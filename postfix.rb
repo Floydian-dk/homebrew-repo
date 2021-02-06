@@ -14,13 +14,13 @@ class Postfix < Formula
 
   def install
     ccargs = ‰W[
-      -DNO_PCRE
-      -DUSE_TLS
-      -DHAS_SSL
-      -DHAS_PCRE
-      -DUSE_SASL_AUTH
-      -DDEF_SERVER_SASL_TYPE=\"dovecot\"
-      -DHAS_MYSQL -I/usr/local/include/mysql
+      --DNO_PCRE
+      --DUSE_TLS
+      --DHAS_SSL
+      --DHAS_PCRE
+      --DUSE_SASL_AUTH
+      --DDEF_SERVER_SASL_TYPE=dovecot
+      --DHAS_MYSQL -I/usr/local/include/mysql
     ]
 
     auxlibs =%W[
