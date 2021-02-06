@@ -50,7 +50,7 @@ class Postfix < Formula
         setgid_group=_postdrop
     ]
 
-    system "make makefiles", *ccargs, *auxlibs
+    system "make", "makefiles", *ccargs, *auxlibs
     system "/bin/sh postfix-install", *args2
 
   end
