@@ -14,13 +14,14 @@ class Postfix < Formula
 
   def install
     ccargs = %W[
+      CCARGS='
       -DNO_PCRE
       -DUSE_TLS
       -DHAS_SSL
       -DHAS_PCRE
       -DUSE_SASL_AUTH
       -DDEF_SERVER_SASL_TYPE=\"dovecot\"
-      -DHAS_MYSQL -I/usr/local/include/mysql
+      -DHAS_MYSQL -I/usr/local/include/mysql'
     ]
 
     auxlibs =%W[
@@ -50,7 +51,7 @@ class Postfix < Formula
         setgid_group=_postdrop
     ]
 
-    system "make makefiles", "CCARGS='"*ccargs"'", "AUXLIBS='"*auxlibs"'"
+    system "make makefiles", *ccargs, *auxlibs
     system "/bin/sh postfix-install", *args2
 
   end
