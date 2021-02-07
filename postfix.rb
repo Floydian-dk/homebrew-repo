@@ -67,9 +67,9 @@ class Postfix < Formula
     "AUXLIBS_PCRE=-L/usr/local/lib -lpcre",
     "AUXLIBS_MYSQL=-L/usr/local/opt/mariadb@10.4/lib -R/usr/local/opt/mariadb@10.4/lib -lmysqlclient -lz -lm"
 
-    system "make",
-    "--debug"
-    #system "/bin/sh", "postfix-install", *args2
+    system "make"
+
+    system "/bin/sh", "postfix-install", *args2
 
   end
 
