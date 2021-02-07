@@ -15,7 +15,7 @@ class Postfix < Formula
 
   def install
     ccargs = %W[
-      CCARGS=
+      CCARGS=''
       -DUSE_SASL_AUTH
       -DDEF_SERVER_SASL_TYPE=\"dovecot\"
       -DDEF_COMMAND_DIR=\"/usr/local/sbin\"
@@ -24,22 +24,22 @@ class Postfix < Formula
       -DUSE_TLS
       -DHAS_PCRE -I/usr/local/include
       -DHAS_SSL -I/usr/local/Cellar/openssl@1.1/1.1.1i/include
-      -DHAS_MYSQL -I/usr/local/Cellar/mariadb@10.4/10.4.17/include/mysql
+      -DHAS_MYSQL -I/usr/local/Cellar/mariadb@10.4/10.4.17/include/mysql'
     ]
 
     auxlibspcre =%W[
-      AUXLIBS_PCRE=
+      AUXLIBS_PCRE=''
       -L/usr/local/lib
-      -lpcre
+      -lpcre'
     ]
 
     auxlibsmysql =%W[
-      AUXLIBS_MYSQL=
+      AUXLIBS_MYSQL=''
       -L/usr/local/opt/mariadb@10.4/lib
       -R/usr/local/opt/mariadb@10.4/lib
       -lmysqlclient
       -lz
-      -lm
+      -lm'
     ]
 
     args2 = %W[
