@@ -62,7 +62,7 @@ class Postfix < Formula
         setgid_group=_postdrop
     ]
 
-    system "make", "-f Makefile.init", "makefiles", *ccargs, *auxlibspcre, *auxlibsmysql
+    system "make", "-f", "Makefile.init", "makefiles", *ccargs, *auxlibspcre, *auxlibsmysql
     system "/bin/sh", "postfix-install", *args2
 
   end
