@@ -63,19 +63,9 @@ class Postfix < Formula
     "-f",
     "Makefile.init",
     "makefiles",
-    "CCARGS=\"-DUSE_SASL_AUTH -DDEF_SERVER_SASL_TYPE=dovecot",
-    "-DDEF_COMMAND_DIR=/usr/local/sbin",
-    "-DDEF_CONFIG_DIR=/usr/local/etc/postfix",
-    "-DDEF_DAEMON_DIR=/usr/local/libexec/postfix",
-    "-DUSE_TLS",
-    "-DHAS_PCRE",
-    "-I/usr/local/include",
-    "-DHAS_SSL",
-    "-I/usr/local/Cellar/openssl@1.1/1.1.1i/include",
-    "-DHAS_MYSQL",
-    "-I/usr/local/Cellar/mariadb@10.4/10.4.17/include/mysql\""
+    "CCARGS=\"-DUSE_SASL_AUTH -DDEF_SERVER_SASL_TYPE=dovecot -DDEF_COMMAND_DIR=/usr/local/sbin -DDEF_CONFIG_DIR=/usr/local/etc/postfix -DDEF_DAEMON_DIR=/usr/local/libexec/postfix -DUSE_TLS -DHAS_PCRE -I/usr/local/include -DHAS_SSL -I/usr/local/Cellar/openssl@1.1/1.1.1i/include -DHAS_MYSQL -I/usr/local/Cellar/mariadb@10.4/10.4.17/include/mysql\""
 
-    system "/bin/sh", "postfix-install", *args2
+    #system "/bin/sh", "postfix-install", *args2
 
   end
 
