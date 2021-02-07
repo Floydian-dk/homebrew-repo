@@ -15,8 +15,7 @@ class Postfix < Formula
 
   def install
     ccargs = %w[
-      CCARGS='-DUSE_SASL_AUTH
-      -DDEF_SERVER_SASL_TYPE=\"dovecot\"
+      CCARGS='-DUSE_SASL_AUTH -DDEF_SERVER_SASL_TYPE=\"dovecot\"
       -DDEF_COMMAND_DIR=\"/usr/local/sbin\"
       -DDEF_CONFIG_DIR=\"/usr/local/etc/postfix\"
       -DDEF_DAEMON_DIR=\"/usr/local/libexec/postfix\"
