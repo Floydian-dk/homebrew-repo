@@ -14,11 +14,30 @@ class Postfix < Formula
 
 
   def install
-    ccargs = %W[CCARGS='-DUSE_SASL_AUTH -DDEF_SERVER_SASL_TYPE=\"dovecot\" -DDEF_COMMAND_DIR=\"/usr/local/sbin\" -DDEF_CONFIG_DIR=\"/usr/local/etc/postfix\" -DDEF_DAEMON_DIR=\"/usr/local/libexec/postfix\" -DUSE_TLS -DHAS_PCRE -I/usr/local/include -DHAS_SSL -I/usr/local/Cellar/openssl@1.1/1.1.1i/include -DHAS_MYSQL -I/usr/local/Cellar/mariadb@10.4/10.4.17/include/mysql']
+    ccargs = %w[
+      CCARGS='-DUSE_SASL_AUTH
+      -DDEF_SERVER_SASL_TYPE=\"dovecot\"
+      -DDEF_COMMAND_DIR=\"/usr/local/sbin\"
+      -DDEF_CONFIG_DIR=\"/usr/local/etc/postfix\"
+      -DDEF_DAEMON_DIR=\"/usr/local/libexec/postfix\"
+      -DUSE_TLS
+      -DHAS_PCRE -I/usr/local/include
+      -DHAS_SSL -I/usr/local/Cellar/openssl@1.1/1.1.1i/include
+      -DHAS_MYSQL -I/usr/local/Cellar/mariadb@10.4/10.4.17/include/mysql'
+    ]
 
-    auxlibspcre =%W[AUXLIBS_PCRE='-L/usr/local/lib -lpcre']
+    auxlibspcre =%w[
+      AUXLIBS_PCRE='-L/usr/local/lib
+      -lpcre'
+    ]
 
-    auxlibsmysql =%W[AUXLIBS_MYSQL='-L/usr/local/opt/mariadb@10.4/lib -R/usr/local/opt/mariadb@10.4/lib -lmysqlclient -lz -lm']
+    auxlibsmysql =%w[
+      AUXLIBS_MYSQL='-L/usr/local/opt/mariadb@10.4/lib
+      -R/usr/local/opt/mariadb@10.4/lib
+      -lmysqlclient
+      -lz
+      -lm'
+    ]
 
     args2 = %W[
         -non-interactive
