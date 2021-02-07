@@ -9,25 +9,37 @@ class Postfix < Formula
 
   depends_on "openssl@1.1"
   depends_on "mariadb@10.4"
+  depends_on "pcre"
 
 
 
   def install
     ccargs = %W[
-      CCARGS='-DNO_PCRE
-      -DUSE_TLS
-      -DHAS_SSL
-      -DHAS_PCRE
+      CCARGS=
       -DUSE_SASL_AUTH
-      -DDEF_SERVER_SASL_TYPE=dovecot
-      -DHAS_MYSQL -I/usr/local/include/mysql'
+      -DDEF_SERVER_SASL_TYPE=\"dovecot\"
+      -DDEF_COMMAND_DIR=\"/usr/local/sbin\"
+      -DDEF_CONFIG_DIR=\"/usr/local/etc/postfix\"
+      -DDEF_DAEMON_DIR=\"/usr/local/libexec/postfix\"
+      -DUSE_TLS
+      -DHAS_PCRE -I/usr/local/include
+      -DHAS_SSL -I/usr/local/Cellar/openssl@1.1/1.1.1i/include
+      -DHAS_MYSQL -I/usr/local/Cellar/mariadb@10.4/10.4.17/include/mysql
     ]
 
-    auxlibs =%W[
-      AUXLIBS='-lpcre
-      -lssl
-      -lcrypto
-      -L/usr/local/lib -lmysqlclient -lz -lm'
+    auxlibspcre =%W[
+      AUXLIBS_PCRE=
+      -L/usr/local/lib
+      -lpcre
+    ]
+
+    auxlibsmysql =%W[
+      AUXLIBS_MYSQL=
+      -L/usr/local/opt/mariadb@10.4/lib
+      -R/usr/local/opt/mariadb@10.4/lib
+      -lmysqlclient
+      -lz
+      -lm
     ]
 
     args2 = %W[
@@ -50,7 +62,7 @@ class Postfix < Formula
         setgid_group=_postdrop
     ]
 
-    system "make", "makefiles", *ccargs, *auxlibs
+    system "make", "-f Makefile.init", "makefiles", *ccargs, *auxlibspcre, *auxlibsmysql
     system "/bin/sh", "postfix-install", *args2
 
   end
