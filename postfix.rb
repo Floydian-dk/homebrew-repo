@@ -45,16 +45,7 @@ class Postfix < Formula
         config_directory=#{etc}/postfix
         queue_directory=#{var}/spool/postfix
         command_directory=#{sbin}
-        daemon_directory=#{libexec}/postfix
-        data_directory=#{lib}/postfix
-        sendmail_path=#{sbin}/sendmail
-        newaliases_path=#{bin}/newaliases
-        mailq_path=#{bin}/mailq
-        etc_directory=#{etc}/postfix
-        share_directory=#{share}/postfix
-        manpage_directory=#{share}/man
-        sample_directory=#{share}/postfix/sample
-        readme_directory=#{share}/postfix/readme
+        tempdir=#{buildpath}
         mail_owner=_postfix
         setgid_group=_postdrop
     ]
