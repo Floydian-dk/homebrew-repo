@@ -44,7 +44,6 @@ class Postfix < Formula
         install_root=#{prefix}
         config_directory=#{etc}/postfix
         queue_directory=#{var}/spool/postfix
-        command_directory=#{sbin}
         tempdir=#{buildpath}
         mail_owner=_postfix
         setgid_group=_postdrop
