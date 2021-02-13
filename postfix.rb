@@ -10,6 +10,7 @@ class Postfix < Formula
   depends_on "openssl@1.1"
   depends_on "mariadb@10.4"
   depends_on "pcre"
+  depends_on "icu4c"
 
 
 
@@ -18,7 +19,7 @@ class Postfix < Formula
       CCARGS='-DUSE_SASL_AUTH
       -DDEF_SERVER_SASL_TYPE=\"dovecot\"
       -DDEF_COMMAND_DIR=\"/usr/local/sbin\"
-      -DDEF_CONFIG_DIR=\"/usr/local/etc/postfix\"
+      -DDEF_CONFIG_DIR=\"/usr/local/Server/Mail/Config/postfix\"
       -DDEF_DAEMON_DIR=\"/usr/local/libexec/postfix\"
       -DUSE_TLS
       -DHAS_PCRE -I/usr/local/include
@@ -80,7 +81,7 @@ class Postfix < Formula
     args4 = %W[
         install_root=#{prefix}
         tempdir=#{buildpath}
-        data_directory=#{var}/lib/postfix
+        data_directory=/usr/local/Server/Mail/Data/mta
         mail_owner=_postfix
         mailq_path=/bin/mailq
         newaliases_path=/bin/newaliases
@@ -91,7 +92,7 @@ class Postfix < Formula
         daemon_directory=/libexec/postfix
         command_directory=/sbin
         manpage_directory=/man
-        meta_directory=/etc/postfix
+        meta_directory=/usr/local/Server/Mail/Config/postfix
     ]
 
     system "make",
