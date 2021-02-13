@@ -77,7 +77,6 @@ class Postfix < Formula
       meta_directory=#{etc}/postfix
     ]
 
-    # Preparing installer without installing
     args4 = %W[
         install_root=#{prefix}
         tempdir=#{buildpath}
@@ -95,6 +94,23 @@ class Postfix < Formula
         meta_directory=/usr/local/Server/Mail/Config/postfix
     ]
 
+    args5 = %W[
+        install_root=/
+        tempdir=#{buildpath}
+        data_directory=/usr/local/Server/Mail/Data/mta
+        mail_owner=_postfix
+        mailq_path=#{bin}/mailq
+        newaliases_path=#{bin}//newaliases
+        queue_directory=/usr/local/Server/Mail/Data/spool
+        sendmail_path=#{sbin}/sendmail
+        setgid_group=_postdrop
+        shlib_directory=#{lib}/postfix
+        daemon_directory=/usr/local/libexec/postfix
+        command_directory=/usr/local/sbin
+        manpage_directory=#{man}
+        meta_directory=/usr/local/Server/Mail/Config/postfix
+    ]
+
     system "make",
     "-f",
     "Makefile.init",
@@ -108,7 +124,7 @@ class Postfix < Formula
 
     system "make"
 
-    system "/bin/sh", "postfix-install", *args4
+    system "/bin/sh", "postfix-install", *args5
     #system "make", "install", *args3
 
   end
