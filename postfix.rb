@@ -73,7 +73,7 @@ class Postfix < Formula
     "makefiles",
     "CCARGS='",
     "-DUSE_SASL_AUTH",
-    "-DDEF_SERVER_SASL_TYPE=\\\"dovecot\\\""
+    "-DDEF_SERVER_SASL_TYPE=\\\"dovecot\\\"",
     *ccargs,
     *auxlibspcre,
     *auxlibsmysql
