@@ -95,7 +95,7 @@ class Postfix < Formula
     ]
 
     args5 = %W[
-        install_root=#{prefix}
+        -non-interactive
         tempdir=#{buildpath}
         data_directory=/usr/local/Server/Mail/Data/mta
         mail_owner=_postfix
