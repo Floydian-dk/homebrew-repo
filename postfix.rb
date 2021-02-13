@@ -68,13 +68,13 @@ class Postfix < Formula
     ]
 
     #Here argument r+ indicate we are opening the file in write mode .
-    simpleFile = File.new("#{buildpath}/output.txt", "r+")
-    if simpleFile
-      data = simpleFile.syswrite(*args5)
-      puts data
-    else
-      puts "Not able to access the file"
-    end
+    simpleFile = File.write('#{buildpath}/output.txt', *args5)
+    #if simpleFile
+    #  data = simpleFile.syswrite(*args5)
+    #  puts data
+    #else
+   #    puts "Not able to access the file"
+  #  end
 
     system "make",
     "-f",
