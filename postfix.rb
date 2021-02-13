@@ -23,10 +23,10 @@ class Postfix < Formula
 
     ccargs = %W[
       CCARGS='-DUSE_SASL_AUTH
-      -DDEF_SERVER_SASL_TYPE=\"dovecot\"
-      -DDEF_COMMAND_DIR=\"/usr/local/sbin\"
-      -DDEF_CONFIG_DIR=\"/usr/local/Server/Mail/Config/postfix\"
-      -DDEF_DAEMON_DIR=\"/usr/local/libexec/postfix\"
+      -DDEF_SERVER_SASL_TYPE=\\\"dovecot\\\"
+      -DDEF_COMMAND_DIR=\\\"/usr/local/sbin\\\"
+      -DDEF_CONFIG_DIR=\\\"/usr/local/Server/Mail/Config/postfix\\\"
+      -DDEF_DAEMON_DIR=\\\"/usr/local/libexec/postfix\\\"
       -DUSE_TLS
       -DHAS_PCRE -I/usr/local/include
       -DHAS_SSL -I#{Formula["openssl@1.1"].opt_prefix}
