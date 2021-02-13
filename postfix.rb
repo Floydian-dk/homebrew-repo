@@ -91,7 +91,6 @@ class Postfix < Formula
         daemon_directory=/libexec/postfix
         command_directory=/sbin
         manpage_directory=/man
-        config_directory=/etc/postfix
         meta_directory=/etc/postfix
     ]
 
