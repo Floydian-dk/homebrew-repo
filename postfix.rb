@@ -68,7 +68,7 @@ class Postfix < Formula
     ]
 
     #Here argument r+ indicate we are opening the file in write mode .
-    simpleFile = File.write('#{buildpath}/output.txt', *args5)
+    simpleFile = File.write('output.txt', '*args5')
     #if simpleFile
     #  data = simpleFile.syswrite(*args5)
     #  puts data
