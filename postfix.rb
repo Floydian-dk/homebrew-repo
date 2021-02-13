@@ -23,8 +23,8 @@ class Postfix < Formula
       -DDEF_DAEMON_DIR=\"/usr/local/libexec/postfix\"
       -DUSE_TLS
       -DHAS_PCRE -I/usr/local/include
-      -DHAS_SSL -I/usr/local/Cellar/openssl@1.1/include
-      -DHAS_MYSQL -I/usr/local/Cellar/mariadb@10.4/include'
+      -DHAS_SSL -I/usr/local/Cellar/openssl@1.1
+      -DHAS_MYSQL -I/usr/local/Cellar/mariadb@10.4'
     ]
 
     auxlibspcre =%w[
