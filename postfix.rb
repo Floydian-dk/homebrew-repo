@@ -19,6 +19,7 @@ class Postfix < Formula
       s.gsub! "$install_root$queue_directory", "$queue_directory"
       s.gsub! "$install_root$meta_directory", "$meta_directory"
       s.gsub! "$install_root$config_directory", "$config_directory"
+      s.gsub! "$install_root$command_directory", "$command_directory"
       #s.gsub! "$install_root$daemon_directory", "$daemon_directory"
     end
 
@@ -55,11 +56,11 @@ class Postfix < Formula
         mailq_path=/bin/mailq
         newaliases_path=/bin/newaliases
         queue_directory=/usr/local/Server/Mail/Data/spool
-        sendmail_path=#{sbin}/sendmail
+        sendmail_path=/sbin/sendmail
         setgid_group=_postdrop
         shlib_directory=#{lib}/postfix
         daemon_directory=/libexec/postfix
-        command_directory=/sbin
+        command_directory=#{sbin}
         manpage_directory=/share/man
         meta_directory=#{etc}/postfix
         config_directory=#{etc}/postfix
