@@ -67,15 +67,6 @@ class Postfix < Formula
         config_directory=#{etc}/postfix
     ]
 
-    #Here argument r+ indicate we are opening the file in write mode .
-    simpleFile = File.write('output.txt', '*args5')
-    if simpleFile
-      data = simpleFile.syswrite(*args5)
-      puts data
-    else
-       puts "Not able to access the file"
-    end
-
     system "make",
     "-f",
     "Makefile.init",
