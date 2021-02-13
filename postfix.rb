@@ -71,8 +71,7 @@ class Postfix < Formula
     "-f",
     "Makefile.init",
     "makefiles",
-    "CCARGS='",
-    "-DUSE_SASL_AUTH",
+    "CCARGS='-DUSE_SASL_AUTH",
     "-DDEF_SERVER_SASL_TYPE=\\\"dovecot\\\"'"
 #    *ccargs,
 #    *auxlibspcre,
