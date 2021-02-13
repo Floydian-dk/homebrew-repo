@@ -114,7 +114,8 @@ class Postfix < Formula
         daemon_directory=/usr/local/libexec/postfix
         command_directory=/sbin
         manpage_directory=/share/man
-        meta_directory=/usr/local/Server/Mail/Config/postfix
+        meta_directory=#{etc}/postfix
+        config_directory=#{etc}/postfix
     ]
 
     system "make",
