@@ -46,74 +46,20 @@ class Postfix < Formula
       -lz
       -lm'    ]
 
-    args2 = %W[
-        -non-interactive
-        install_root=/
-        tempdir=#{buildpath}
-        data_directory=#{var}/lib/postfix
-        mail_owner=_postfix
-        mailq_path=#{bin}/mailq
-        newaliases_path=#{bin}/newaliases
-        queue_directory=#{var}/spool/postfix
-        sendmail_path=#{sbin}/sendmail
-        setgid_group=_postdrop
-        shlib_directory=#{lib}/postfix
-        daemon_directory=/libexec/postfix
-        command_directory=#{sbin}
-        manpage_directory=#{man}
-        config_directory=#{etc}/postfix
-        meta_directory=#{etc}/postfix
-    ]
-
-    args3 = %W[
-      install_root=/
-      tempdir=#{buildpath}
-      data_directory=#{var}/lib/postfix
-      mail_owner=_postfix
-      mailq_path=#{bin}/mailq
-      newaliases_path=#{bin}/newaliases
-      queue_directory=#{var}/spool/postfix
-      sendmail_path=#{sbin}/sendmail
-      setgid_group=_postdrop
-      shlib_directory=#{lib}/postfix
-      daemon_directory=#{libexec}/postfix
-      command_directory=#{sbin}
-      manpage_directory=#{man}
-      config_directory=#{etc}/postfix
-      meta_directory=#{etc}/postfix
-    ]
-
-    args4 = %W[
-        install_root=#{prefix}
-        tempdir=#{buildpath}
-        data_directory=/usr/local/Server/Mail/Data/mta
-        mail_owner=_postfix
-        mailq_path=/bin/mailq
-        newaliases_path=/bin/newaliases
-        queue_directory=#{var}/spool/postfix
-        sendmail_path=/sbin/sendmail
-        setgid_group=_postdrop
-        shlib_directory=/lib/postfix
-        daemon_directory=/libexec/postfix
-        command_directory=/sbin
-        manpage_directory=/man
-        meta_directory=/usr/local/Server/Mail/Config/postfix
-    ]
-
     args5 = %W[
         -non-interactive
         install_root=#{prefix}
         tempdir=#{buildpath}
         data_directory=/usr/local/Server/Mail/Data/mta
         mail_owner=_postfix
-        mailq_path=#{bin}/mailq
-        newaliases_path=#{bin}/newaliases
+        mailq_path=/bin/mailq
+        newaliases_path=/bin/newaliases
         queue_directory=/usr/local/Server/Mail/Data/spool
         sendmail_path=#{sbin}/sendmail
         setgid_group=_postdrop
         shlib_directory=#{lib}/postfix
         daemon_directory=/libexec/postfix
-        command_directory=#{sbin}
+        command_directory=/sbin
         manpage_directory=/share/man
         meta_directory=#{etc}/postfix
         config_directory=#{etc}/postfix
