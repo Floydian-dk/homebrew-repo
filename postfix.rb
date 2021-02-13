@@ -16,7 +16,7 @@ class Postfix < Formula
 
   def install
     ccargs = %W[
-      CCARGS='-DUSE_SASL_AUTH
+      CCARGS=-DUSE_SASL_AUTH
       -DDEF_SERVER_SASL_TYPE=\"dovecot\"
       -DDEF_COMMAND_DIR=\"/usr/local/sbin\"
       -DDEF_CONFIG_DIR=\"/usr/local/Server/Mail/Config/postfix\"
@@ -24,20 +24,20 @@ class Postfix < Formula
       -DUSE_TLS
       -DHAS_PCRE -I/usr/local/include
       -DHAS_SSL -I#{Formula["openssl@1.1"].opt_prefix}
-      -DHAS_MYSQL -I#{Formula["mariadb@10.4"].opt_prefix}/include/mysql'
+      -DHAS_MYSQL -I#{Formula["mariadb@10.4"].opt_prefix}/include/mysql
     ]
 
     auxlibspcre =%w[
-      AUXLIBS_PCRE='-L/usr/local/lib
-      -lpcre'
+      AUXLIBS_PCRE=-L/usr/local/lib
+      -lpcre
     ]
 
     auxlibsmysql =%w[
-      AUXLIBS_MYSQL='-L#{Formula["mariadb@10.4"].opt_prefix}/lib
+      AUXLIBS_MYSQL=-L#{Formula["mariadb@10.4"].opt_prefix}/lib
       -R#{Formula["mariadb@10.4"].opt_prefix}/lib
       -lmysqlclient
       -lz
-      -lm'
+      -lm
     ]
 
     args2 = %W[
