@@ -24,7 +24,7 @@ class Postfix < Formula
       #s.gsub! "$install_root$daemon_directory", "$daemon_directory"
     end
 
-    ccargs = %W[
+    ccargs = %w[
       CCARGS='-DUSE_SASL_AUTH
       -DDEF_SERVER_SASL_TYPE=\\\"dovecot\\\"
       -DDEF_COMMAND_DIR=\\\"/usr/local/sbin\\\"
