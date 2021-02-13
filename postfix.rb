@@ -27,12 +27,12 @@ class Postfix < Formula
       -DHAS_MYSQL -I#{Formula["mariadb@10.4"].opt_prefix}/include/mysql
     ]
 
-    auxlibspcre =%w[
+    auxlibspcre =%W[
       AUXLIBS_PCRE=-L/usr/local/lib
       -lpcre
     ]
 
-    auxlibsmysql =%w[
+    auxlibsmysql =%W[
       AUXLIBS_MYSQL=-L#{Formula["mariadb@10.4"].opt_prefix}/lib
       -R#{Formula["mariadb@10.4"].opt_prefix}/lib
       -lmysqlclient
