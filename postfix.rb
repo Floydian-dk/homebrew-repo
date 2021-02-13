@@ -24,7 +24,7 @@ class Postfix < Formula
       -DUSE_TLS
       -DHAS_PCRE -I/usr/local/include
       -DHAS_SSL -I/usr/local/Cellar/openssl@1.1
-      -DHAS_MYSQL -I/usr/local/opt/mariadb@10.4'
+      -DHAS_MYSQL -I/usr/local/opt/mariadb@10.4/include/mysql'
     ]
 
     auxlibspcre =%w[
