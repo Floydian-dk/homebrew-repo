@@ -20,6 +20,7 @@ class Postfix < Formula
       s.gsub! "$install_root$meta_directory", "$meta_directory"
       s.gsub! "$install_root$config_directory", "$config_directory"
       s.gsub! "$install_root$command_directory", "$command_directory"
+      s.gsub! "$install_root$shlib_directory", "$shlib_directory"
       #s.gsub! "$install_root$daemon_directory", "$daemon_directory"
     end
 
