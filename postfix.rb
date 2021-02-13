@@ -23,8 +23,8 @@ class Postfix < Formula
       -DDEF_DAEMON_DIR=\"/usr/local/libexec/postfix\"
       -DUSE_TLS
       -DHAS_PCRE -I/usr/local/include
-      -DHAS_SSL -I/usr/local/Cellar/openssl@1.1
-      -DHAS_MYSQL -I/usr/local/opt/mariadb@10.4/include/mysql'
+      -DHAS_SSL -I#{Formula["openssl@1.1"].opt_prefix}
+      -DHAS_MYSQL -I#{Formula["mariadb@10.4"].opt_prefix}/include/mysql'
     ]
 
     auxlibspcre =%w[
@@ -33,8 +33,8 @@ class Postfix < Formula
     ]
 
     auxlibsmysql =%w[
-      AUXLIBS_MYSQL='-L/usr/local/opt/mariadb@10.4/lib
-      -R/usr/local/opt/mariadb@10.4/lib
+      AUXLIBS_MYSQL='-L#{Formula["mariadb@10.4"].opt_prefix}/lib
+      -R#{Formula["mariadb@10.4"].opt_prefix}/lib
       -lmysqlclient
       -lz
       -lm'
@@ -95,7 +95,7 @@ class Postfix < Formula
     ]
 
     args5 = %W[
-        install_root=/
+        install_root=#{prefix}
         tempdir=#{buildpath}
         data_directory=/usr/local/Server/Mail/Data/mta
         mail_owner=_postfix
