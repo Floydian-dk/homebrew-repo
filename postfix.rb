@@ -58,7 +58,7 @@ class Postfix < Formula
         sendmail_path=#{sbin}/sendmail
         setgid_group=_postdrop
         shlib_directory=#{lib}/postfix
-        daemon_directory=#{libexec}/postfix
+        daemon_directory=/libexec/postfix
         command_directory=#{sbin}
         manpage_directory=#{man}
         config_directory=#{etc}/postfix
