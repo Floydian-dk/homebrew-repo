@@ -105,15 +105,15 @@ class Postfix < Formula
         tempdir=#{buildpath}
         data_directory=/usr/local/Server/Mail/Data/mta
         mail_owner=_postfix
-        mailq_path=#{bin}/mailq
-        newaliases_path=#{bin}/newaliases
+        mailq_path=/bin/mailq
+        newaliases_path=/bin/newaliases
         queue_directory=/usr/local/Server/Mail/Data/spool
-        sendmail_path=#{sbin}/sendmail
+        sendmail_path=/sbin/sendmail
         setgid_group=_postdrop
-        shlib_directory=#{lib}/postfix
+        shlib_directory=/lib/postfix
         daemon_directory=/usr/local/libexec/postfix
-        command_directory=#{sbin}
-        manpage_directory=#{man}
+        command_directory=/sbin
+        manpage_directory=/share/man
         meta_directory=/usr/local/Server/Mail/Config/postfix
     ]
 
