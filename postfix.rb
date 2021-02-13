@@ -41,12 +41,21 @@ class Postfix < Formula
 
     args2 = %W[
         -non-interactive
-        install_root=#{prefix}
-        config_directory=#{etc}/postfix
-        queue_directory=#{var}/spool/postfix
+        install_root=/
         tempdir=#{buildpath}
+        data_directory=#{var}/lib/postfix
         mail_owner=_postfix
+        mailq_path=#{bin}/mailq
+        newaliases_path=#{bin}/newaliases
+        queue_directory=#{var}/spool/postfix
+        sendmail_path=#{sbin}/sendmail
         setgid_group=_postdrop
+        shlib_directory=#{lib}/postfix
+        daemon_directory=#{libexec}/postfix
+        command_directory=#{sbin}
+        manpage_directory=#{man}
+        config_directory=#{etc}/postfix
+        meta_directory=#{etc}/postfix
     ]
 
     args3 = %W[
@@ -77,8 +86,8 @@ class Postfix < Formula
 
     system "make"
 
-    #system "/bin/sh", "postfix-install", *args2
-    system "make", "install", *args3
+    system "/bin/sh", "postfix-install", *args2
+    #system "make", "install", *args3
 
   end
 
