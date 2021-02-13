@@ -13,10 +13,16 @@ class Postfix < Formula
   depends_on "icu4c"
 
 
-
   def install
+
+    inreplace "postfix-install" do |s|
+      s.gsub! "$install_root$queue_directory", "$queue_directory"
+      s.gsub! "$install_root$meta_directory", "$meta_directory"
+      s.gsub! "$install_root$config_directory", "$config_directory"
+    end
+
     ccargs = %W[
-      CCARGS=-DUSE_SASL_AUTH
+      CCARGS='-DUSE_SASL_AUTH
       -DDEF_SERVER_SASL_TYPE=\"dovecot\"
       -DDEF_COMMAND_DIR=\"/usr/local/sbin\"
       -DDEF_CONFIG_DIR=\"/usr/local/Server/Mail/Config/postfix\"
@@ -24,21 +30,20 @@ class Postfix < Formula
       -DUSE_TLS
       -DHAS_PCRE -I/usr/local/include
       -DHAS_SSL -I#{Formula["openssl@1.1"].opt_prefix}
-      -DHAS_MYSQL -I#{Formula["mariadb@10.4"].opt_prefix}/include/mysql
+      -DHAS_MYSQL -I#{Formula["mariadb@10.4"].opt_prefix}/include/mysql'
     ]
 
     auxlibspcre =%W[
-      AUXLIBS_PCRE=-L/usr/local/lib
-      -lpcre
+      AUXLIBS_PCRE='-L/usr/local/lib
+      -lpcre'
     ]
 
     auxlibsmysql =%W[
-      AUXLIBS_MYSQL=-L#{Formula["mariadb@10.4"].opt_prefix}/lib
+      AUXLIBS_MYSQL='-L#{Formula["mariadb@10.4"].opt_prefix}/lib
       -R#{Formula["mariadb@10.4"].opt_prefix}/lib
       -lmysqlclient
       -lz
-      -lm
-    ]
+      -lm'    ]
 
     args2 = %W[
         -non-interactive
@@ -96,17 +101,18 @@ class Postfix < Formula
 
     args5 = %W[
         -non-interactive
+        install_root=#{prefix}
         tempdir=#{buildpath}
         data_directory=/usr/local/Server/Mail/Data/mta
         mail_owner=_postfix
         mailq_path=#{bin}/mailq
-        newaliases_path=#{bin}//newaliases
+        newaliases_path=#{bin}/newaliases
         queue_directory=/usr/local/Server/Mail/Data/spool
         sendmail_path=#{sbin}/sendmail
         setgid_group=_postdrop
         shlib_directory=#{lib}/postfix
         daemon_directory=/usr/local/libexec/postfix
-        command_directory=/usr/local/sbin
+        command_directory=#{sbin}
         manpage_directory=#{man}
         meta_directory=/usr/local/Server/Mail/Config/postfix
     ]
