@@ -34,18 +34,18 @@ class Rspamd < Formula
       -DENABLE_SNOWBALL=ON
       -DENABLE_TORCH=ON
       -DINSTALL_EXAMPLES=ON
-      -DLIBDIR=${prefix}/lib
+      -DLIBDIR=#{lib}
       -DLOGDIR=/var/log/rspamd
       -DMANDIR=#{man}
       -DNO_SHARED=ON
       -DPCRE_ROOT_DIR=/usr/lib
       -DRSPAMD_USER=_rspamd
-      -DRUNDIR=${prefix}/var/run/${name}
+      -DRUNDIR=#{var}/run/rspamd
     ]
 
     #system "mkdir rspamd.build"
     #system "cd rspamd.build"
-    system "cmake rspamd", *args
+    system "cmake", "rspamd", *args
     system "make"
     system "make install"
   end
