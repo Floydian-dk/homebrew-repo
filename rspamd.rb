@@ -43,9 +43,9 @@ class Rspamd < Formula
       -DRUNDIR=${prefix}/var/run/${name}
     ]
 
-    system "mkdir rspamd.build"
-    system "cd rspamd.build"
-    system "cmake ../rspamd", *args
+    #system "mkdir rspamd.build"
+    #system "cd rspamd.build"
+    system "cmake rspamd", *args
     system "make"
     system "make install"
   end
