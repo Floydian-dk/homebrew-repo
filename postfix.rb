@@ -72,7 +72,7 @@ class Postfix < Formula
     "-f",
     "Makefile.init",
     "makefiles",
-    "CCARGS='-DUSE_SASL_AUTH -DDEF_SERVER_SASL_TYPE=\\\"dovecot\\\" -DDEF_COMMAND_DIR=/usr/local/sbin -DDEF_CONFIG_DIR=/usr/local/Server/Mail/Config/postfix -DDEF_DAEMON_DIR=/usr/local/libexec/postfix -DUSE_TLS -DHAS_PCRE -I/usr/local/include -DHAS_SSL -I#{Formula["openssl@1.1"].opt_prefix} -DHAS_MYSQL -I#{Formula["mariadb@10.4"].opt_prefix}/include/mysql'",
+    "CCARGS='-DUSE_SASL_AUTH -DDEF_SERVER_SASL_TYPE=\\\"dovecot\\\" -DDEF_COMMAND_DIR=\"/usr/local/sbin\" -DDEF_CONFIG_DIR=\"/usr/local/Server/Mail/Config/postfix\" -DDEF_DAEMON_DIR=/usr/local/libexec/postfix -DUSE_TLS -DHAS_PCRE -I/usr/local/include -DHAS_SSL -I#{Formula["openssl@1.1"].opt_prefix} -DHAS_MYSQL -I#{Formula["mariadb@10.4"].opt_prefix}/include/mysql'",
     "AUXLIBS_PCRE='-L/usr/local/lib -lpcre'",
     "AUXLIBS_MYSQL='-L#{Formula["mariadb@10.4"].opt_prefix}/lib -R#{Formula["mariadb@10.4"].opt_prefix}/lib -lmysqlclient -lz -lm'"
 
