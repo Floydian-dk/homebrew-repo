@@ -19,6 +19,7 @@ class Rspamd < Formula
   depends_on "hiredis"
   depends_on "redis"
   depends_on "perl"
+  depends_on "cmake"
 
   def install
     args = %W[
