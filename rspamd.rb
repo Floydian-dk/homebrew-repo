@@ -5,6 +5,8 @@ class Rspamd < Formula
   sha256 "002aee47dc4d6f8c6c0572b58ccb0cbcbb9bb7689442c33a5a5cf893e72506db"
   license "Apache-2"
 
+  depends_on "pkg-config"
+
   depends_on "openssl@1.1"
   depends_on "icu4c"
   depends_on "glib"
@@ -46,7 +48,7 @@ class Rspamd < Formula
 
     #system "mkdir rspamd.build"
     #system "cd rspamd.build"
-    system "cmake", "rspamd", *args
+    system "cmake", *args
     system "make"
     system "make install"
   end
