@@ -96,7 +96,7 @@ class Rspamd < Formula
       ENV["CMAKE_GENERATOR"] = "CodeBlocks - Unix Makefiles"
       ENV["CC"] = '/usr/bin/clang'
       ENV["CC_PRINT_OPTIONS"] = 'YES'
-      ENV["CC_PRINT_OPTIONS_FILE"] = "'#{buildpath}/.CC_PRINT_OPTIONS'"
+      #ENV["CC_PRINT_OPTIONS_FILE"] = "'#{buildpath}/.CC_PRINT_OPTIONS'"
       ENV["CFLAGS"] = '-pipe -Os -DNDEBUG -I/opt/local/include -isysroot/Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk'
       ENV["CPATH"] = '/usr/local/include'
       ENV["CPPFLAGS"] = '-isysroot/Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk'
@@ -119,7 +119,7 @@ class Rspamd < Formula
 
     #system "mkdir rspamd.build"
     #system "cd rspamd.build"
-    system "cmake", *args2
+    system "/opt/local/bin/cmake", *args2
     system "make"
     system "make install"
   end
