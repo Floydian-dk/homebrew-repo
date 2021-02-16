@@ -49,9 +49,53 @@ class Rspamd < Formula
       -DRUNDIR=#{var}/run/rspamd
     ]
 
+    args2 = %W[
+      -G \"CodeBlocks - Unix Makefiles¶"
+      -DCMAKE_BUILD_TYPE=MacPorts
+      -DCMAKE_INSTALL_PREFIX=\"#{prefix}\"
+      -DCMAKE_INSTALL_NAME_DIR="/usr/local/lib"
+      -DCMAKE_SYSTEM_PREFIX_PATH=\"/usr/local;/usr\"
+      -DCMAKE_C_COMPILER="$CC"
+      -DCMAKE_CXX_COMPILER="$CXX"
+      -DCMAKE_POLICY_DEFAULT_CMP0025=NEW
+      -DCMAKE_POLICY_DEFAULT_CMP0060=NEW
+      -DCMAKE_VERBOSE_MAKEFILE=ON
+      -DCMAKE_COLOR_MAKEFILE=ON
+      -DCMAKE_FIND_FRAMEWORK=LAST
+      -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
+      -DCMAKE_MAKE_PROGRAM=/usr/bin/make
+      -DCMAKE_MODULE_PATH="/usr/local/share/cmake/Modules"
+      -DCMAKE_PREFIX_PATH="/usr/local/share/cmake/Modules"
+      -DCMAKE_BUILD_WITH_INSTALL_RPATH:BOOL=ON
+      -DCMAKE_INSTALL_RPATH="/usr/local/lib"
+      -Wno-dev
+      -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
+      -DCMAKE_INSTALL_PREFIX=/usr/local
+      -DCONFDIR=/usr/local/etc/rspamd
+      -DDBDIR=/usr/local/var/lib/rspamd
+      -DENABLE_FANN=ON
+      -DENABLE_GD=ON
+      -DENABLE_HYPERSCAN=ON
+      -DENABLE_LIBUNWIND=ON
+      -DENABLE_LUAJIT=ON
+      -DENABLE_SNOWBALL=ON
+      -DENABLE_TORCH=ON
+      -DINSTALL_EXAMPLES=ON
+      -DLIBDIR=/usr/local/lib
+      -DLOGDIR=/usr/local/var/log/rspamd
+      -DMANDIR=/usr/local/share/man
+      -DNO_SHARED=ON
+      -DPCRE_ROOT_DIR=/usr/lib
+      -DRSPAMD_USER=_rspamd
+      -DRUNDIR=/usr/local/var/run/rspamd
+      -DPCRE_ROOT_DIR=/usr/lib
+      -DCMAKE_OSX_DEPLOYMENT_TARGET="10.15"
+      -DCMAKE_OSX_SYSROOT="/Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk"
+    ]
+
     #system "mkdir rspamd.build"
     #system "cd rspamd.build"
-    system "cmake", *args
+    system "cmake", *args2
     system "make"
     system "make install"
   end
