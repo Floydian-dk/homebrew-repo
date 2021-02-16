@@ -27,6 +27,29 @@ class Rspamd < Formula
   depends_on "cmake" => :build
 
   def install
+    ENV["CMAKE_GENERATOR"] = "CodeBlocks - Unix Makefiles"
+    ENV["CC"] = "/usr/bin/clang"
+    ENV["CC_PRINT_OPTIONS"] = "YES"
+    #ENV["CC_PRINT_OPTIONS_FILE"] = "'#{buildpath}/.CC_PRINT_OPTIONS'"
+    ENV["CFLAGS"] = "-pipe -Os -DNDEBUG -I/opt/local/include -isysroot/Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk"
+    ENV["CPATH"] = "/usr/local/include"
+    ENV["CPPFLAGS"] = "-isysroot/Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk"
+    ENV["CXX"] = "/usr/bin/clang++"
+    ENV["CXXFLAGS"] = "-pipe -Os -DNDEBUG -I/opt/local/include -stdlib=libc++ -isysroot/Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk"
+    ENV["DEVELOPER_DIR"] = "/Library/Developer/CommandLineTools"
+    ENV["F90FLAGS"] = "-pipe -Os -m64"
+    ENV["FCFLAGS"] = "-pipe -Os -m64"
+    ENV["FFLAGS"] = "-pipe -Os -m64"
+    ENV["INSTALL"] = "/usr/bin/install -c"
+    ENV["LDFLAGS"] = "-L/usr/local/lib -Wl,-headerpad_max_install_names -Wl,-syslibroot,/Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk"
+    ENV["LIBRARY_PATH"] = "/usr/local/lib"
+    ENV["MACOSX_DEPLOYMENT_TARGET"] = "10.15"
+    ENV["OBJC"] = "/usr/bin/clang"
+    ENV["OBJCFLAGS"] = "-pipe -Os -I/usr/local/include -isysroot/Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk"
+    ENV["OBJCXX"] = "/usr/bin/clang++"
+    ENV["OBJCXXFLAGS"] = "-pipe -Os -DNDEBUG -I/usr/local/include -I/usr/local/include -stdlib=libc++ -isysroot/Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk"
+    ENV["SDKROOT"] = "/Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk"
+
     args = %W[
       -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
       -DCMAKE_INSTALL_PREFIX=#{prefix}
@@ -54,8 +77,8 @@ class Rspamd < Formula
       -DCMAKE_INSTALL_PREFIX="#{prefix}"
       -DCMAKE_INSTALL_NAME_DIR="/usr/local/lib"
       -DCMAKE_SYSTEM_PREFIX_PATH="/usr;/usr/local"
-      -DCMAKE_C_COMPILER='/usr/bin/clang'
-      -DCMAKE_CXX_COMPILER='/usr/bin/clang++'
+      -DCMAKE_C_COMPILER=/usr/bin/clang
+      -DCMAKE_CXX_COMPILER=/usr/bin/clang++
       -DCMAKE_POLICY_DEFAULT_CMP0025=NEW
       -DCMAKE_POLICY_DEFAULT_CMP0060=NEW
       -DCMAKE_VERBOSE_MAKEFILE=ON
@@ -91,34 +114,9 @@ class Rspamd < Formula
       -DCMAKE_OSX_SYSROOT=/Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk
     ]
 
-    # Setting up build environment
-    #ccenv = %W[
-      ENV["CMAKE_GENERATOR"] = "CodeBlocks - Unix Makefiles"
-      ENV["CC"] = '/usr/bin/clang'
-      ENV["CC_PRINT_OPTIONS"] = 'YES'
-      #ENV["CC_PRINT_OPTIONS_FILE"] = "'#{buildpath}/.CC_PRINT_OPTIONS'"
-      ENV["CFLAGS"] = '-pipe -Os -DNDEBUG -I/opt/local/include -isysroot/Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk'
-      ENV["CPATH"] = '/usr/local/include'
-      ENV["CPPFLAGS"] = '-isysroot/Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk'
-      ENV["CXX"] = '/usr/bin/clang++'
-      ENV["CXXFLAGS"] = '-pipe -Os -DNDEBUG -I/opt/local/include -stdlib=libc++ -isysroot/Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk'
-      ENV["DEVELOPER_DIR"] = '/Library/Developer/CommandLineTools'
-      ENV["F90FLAGS"] = '-pipe -Os -m64'
-      ENV["FCFLAGS"] = '-pipe -Os -m64'
-      ENV["FFLAGS"] = '-pipe -Os -m64'
-      ENV["INSTALL"] = '/usr/bin/install -c'
-      ENV["LDFLAGS"] = '-L/usr/local/lib -Wl,-headerpad_max_install_names -Wl,-syslibroot,/Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk'
-      ENV["LIBRARY_PATH"] = '/usr/local/lib'
-      ENV["MACOSX_DEPLOYMENT_TARGET"] = '10.15'
-      ENV["OBJC"] = '/usr/bin/clang'
-      ENV["OBJCFLAGS"] = '-pipe -Os -I/usr/local/include -isysroot/Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk'
-      ENV["OBJCXX"] = '/usr/bin/clang++'
-      ENV["OBJCXXFLAGS"] = '-pipe -Os -DNDEBUG -I/usr/local/include -I/usr/local/include -stdlib=libc++ -isysroot/Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk'
-      ENV["SDKROOT"] = '/Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk'
-   #]
-
     #system "mkdir rspamd.build"
     #system "cd rspamd.build"
+    system "cmake", ""
     system "/opt/local/bin/cmake", *args2
     system "make"
     system "make install"
