@@ -27,7 +27,7 @@ class Rspamd < Formula
   depends_on "cmake" => :build
 
   def install
-    ENV["CMAKE_GENERATOR"] = "CodeBlocks - Unix Makefiles"
+    ENV["CMAKE_GENERATOR"] = "CodeBlocks - Unix Makefiles1"
     ENV["CC"] = "/usr/bin/clang"
     ENV["CC_PRINT_OPTIONS"] = "YES"
     #ENV["CC_PRINT_OPTIONS_FILE"] = "'#{buildpath}/.CC_PRINT_OPTIONS'"
