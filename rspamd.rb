@@ -53,7 +53,7 @@ class Rspamd < Formula
       -DCMAKE_BUILD_TYPE=MacPorts
       -DCMAKE_INSTALL_PREFIX="#{prefix}"
       -DCMAKE_INSTALL_NAME_DIR="/usr/local/lib"
-      -DCMAKE_SYSTEM_PREFIX_PATH="/usr/local;/usr"
+      -DCMAKE_SYSTEM_PREFIX_PATH="/usr;/usr/local"
       -DCMAKE_C_COMPILER='/usr/bin/clang'
       -DCMAKE_CXX_COMPILER='/usr/bin/clang++'
       -DCMAKE_POLICY_DEFAULT_CMP0025=NEW
@@ -84,7 +84,7 @@ class Rspamd < Formula
       -DLOGDIR=/usr/local/var/log/rspamd
       -DMANDIR=/usr/local/share/man
       -DNO_SHARED=ON
-      -DPCRE_ROOT_DIR=/usr/lib/libpcre.dylib
+      -DPCRE_ROOT_DIR=/usr/lib
       -DRSPAMD_USER=_rspamd
       -DRUNDIR=/usr/local/var/run/rspamd
       -DCMAKE_OSX_DEPLOYMENT_TARGET="10.15"
