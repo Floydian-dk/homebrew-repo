@@ -84,7 +84,7 @@ class Rspamd < Formula
       -DLOGDIR=/usr/local/var/log/rspamd
       -DMANDIR=/usr/local/share/man
       -DNO_SHARED=ON
-      -DPCRE_ROOT_DIR='/usr/lib'
+      -DPCRE_ROOT_DIR=/usr/lib/libpcre.dylib
       -DRSPAMD_USER=_rspamd
       -DRUNDIR=/usr/local/var/run/rspamd
       -DCMAKE_OSX_DEPLOYMENT_TARGET="10.15"
