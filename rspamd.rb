@@ -96,12 +96,12 @@ class Rspamd < Formula
       ENV["CMAKE_GENERATOR"] = "CodeBlocks - Unix Makefiles"
       ENV["CC"] = '/usr/bin/clang'
       ENV["CC_PRINT_OPTIONS"] = 'YES'
-      #ENV["CC_PRINT_OPTIONS_FILE"] = '#{buildpath}/.CC_PRINT_OPTIONS'
-      ENV["CFLAGS"] = '-pipe -Os -DNDEBUG -I/usr/local/include -isysroot/Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk'
+      ENV["CC_PRINT_OPTIONS_FILE"] = "'#{buildpath}/.CC_PRINT_OPTIONS'"
+      ENV["CFLAGS"] = '-pipe -Os -DNDEBUG -I/opt/local/include -isysroot/Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk'
       ENV["CPATH"] = '/usr/local/include'
       ENV["CPPFLAGS"] = '-isysroot/Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk'
       ENV["CXX"] = '/usr/bin/clang++'
-      ENV["CXXFLAGS"] = '-pipe -Os -DNDEBUG -I/usr/local/include -stdlib=libc++ -isysroot/Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk'
+      ENV["CXXFLAGS"] = '-pipe -Os -DNDEBUG -I/opt/local/include -stdlib=libc++ -isysroot/Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk'
       ENV["DEVELOPER_DIR"] = '/Library/Developer/CommandLineTools'
       ENV["F90FLAGS"] = '-pipe -Os -m64'
       ENV["FCFLAGS"] = '-pipe -Os -m64'
