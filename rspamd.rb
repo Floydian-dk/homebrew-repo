@@ -119,7 +119,7 @@ class Rspamd < Formula
 
     #system "mkdir rspamd.build"
     #system "cd rspamd.build"
-    system "/opt/local/bin/cmake -G \"CodeBlocks - Unix Makefiles\"", *args2
+    system "/opt/local/bin/cmake -G 'CodeBlocks - Unix Makefiles'", *args2
     system "make"
     system "make install"
   end
