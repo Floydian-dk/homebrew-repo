@@ -49,8 +49,7 @@ class Rspamd < Formula
       -DRUNDIR=#{var}/run/rspamd
     ]
 
-    args2 = %w[
-      -G \"CodeBlocks - Unix Makefiles\"
+    args2 = %W[
       -DCMAKE_BUILD_TYPE=MacPorts
       -DCMAKE_INSTALL_PREFIX="#{prefix}"
       -DCMAKE_INSTALL_NAME_DIR="/usr/local/lib"
@@ -120,7 +119,7 @@ class Rspamd < Formula
 
     #system "mkdir rspamd.build"
     #system "cd rspamd.build"
-    system "/opt/local/bin/cmake", *args2
+    system "/opt/local/bin/cmake -G \"CodeBlocks - Unix Makefiles\"", *args2
     system "make"
     system "make install"
   end
