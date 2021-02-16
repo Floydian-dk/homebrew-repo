@@ -94,33 +94,33 @@ class Rspamd < Formula
     ]
 
     # Setting up build environment
-    ccenv = %W[
-      CC='/usr/bin/clang'
-      CC_PRINT_OPTIONS='YES'
-      CC_PRINT_OPTIONS_FILE='#{buildpath}/.CC_PRINT_OPTIONS'
-      CFLAGS='-pipe -Os -DNDEBUG -I/usr/local/include -isysroot/Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk'
-     CPATH='/usr/local/include'
-     CPPFLAGS='-isysroot/Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk'
-     CXX='/usr/bin/clang++'
-     CXXFLAGS='-pipe -Os -DNDEBUG -I/usr/local/include -stdlib=libc++ -isysroot/Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk'
-     DEVELOPER_DIR='/Library/Developer/CommandLineTools'
-     F90FLAGS='-pipe -Os -m64'
-     FCFLAGS='-pipe -Os -m64'
-     FFLAGS='-pipe -Os -m64'
-     INSTALL='/usr/bin/install -c'
-     LDFLAGS='-L/usr/local/lib -Wl,-headerpad_max_install_names -Wl,-syslibroot,/Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk'
-     LIBRARY_PATH='/usr/local/lib'
-     MACOSX_DEPLOYMENT_TARGET='10.15'
-     OBJC='/usr/bin/clang'
-     OBJCFLAGS='-pipe -Os -I/usr/local/include -isysroot/Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk'
-     OBJCXX='/usr/bin/clang++'
-     OBJCXXFLAGS='-pipe -Os -DNDEBUG -I/usr/local/include -I/usr/local/include -stdlib=libc++ -isysroot/Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk'
-     SDKROOT='/Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk'
-   ]
+    #ccenv = %W[
+      ENV["CC="] = "/usr/bin/clang"
+      ENV["CC_PRINT_OPTIONS"] = 'YES'
+      ENV["CC_PRINT_OPTIONS_FILE"] = '#{buildpath}/.CC_PRINT_OPTIONS'
+      ENV["CFLAGS"] = '-pipe -Os -DNDEBUG -I/usr/local/include -isysroot/Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk'
+      ENV["CPATH"] = '/usr/local/include'
+      ENV["CPPFLAGS"] = '-isysroot/Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk'
+      ENV["CXX"] = '/usr/bin/clang++'
+      ENV["CXXFLAGS"] = '-pipe -Os -DNDEBUG -I/usr/local/include -stdlib=libc++ -isysroot/Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk'
+      ENV["DEVELOPER_DIR"] = '/Library/Developer/CommandLineTools'
+      ENV["F90FLAGS"] = '-pipe -Os -m64'
+      ENV["FCFLAGS"] = '-pipe -Os -m64'
+      ENV["FFLAGS"] = '-pipe -Os -m64'
+      ENV["INSTALL"] = '/usr/bin/install -c'
+      ENV["LDFLAGS"] = '-L/usr/local/lib -Wl,-headerpad_max_install_names -Wl,-syslibroot,/Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk'
+      ENV["LIBRARY_PATH"] = '/usr/local/lib'
+      ENV["MACOSX_DEPLOYMENT_TARGET"] = '10.15'
+      ENV["OBJC"] = '/usr/bin/clang'
+      ENV["OBJCFLAGS"] = '-pipe -Os -I/usr/local/include -isysroot/Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk'
+      ENV["OBJCXX"] = '/usr/bin/clang++'
+      ENV["OBJCXXFLAGS"] = '-pipe -Os -DNDEBUG -I/usr/local/include -I/usr/local/include -stdlib=libc++ -isysroot/Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk'
+      ENV["SDKROOT"] = '/Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk'
+   #]
 
     #system "mkdir rspamd.build"
     #system "cd rspamd.build"
-    system "cmake", *ccenv, *args2
+    system "cmake", *args2
     system "make"
     system "make install"
   end
