@@ -120,7 +120,7 @@ class Rspamd < Formula
 
     #system "mkdir rspamd.build"
     #system "cd rspamd.build"
-    system "/opt/local/bin/cmake", *args2
+    system "cmake", *args2
     system "make"
     system "make install"
   end
