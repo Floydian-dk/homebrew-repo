@@ -77,8 +77,8 @@ class Rspamd < Formula
       -DCMAKE_INSTALL_PREFIX="#{prefix}"
       -DCMAKE_INSTALL_NAME_DIR="/usr/local/lib"
       -DCMAKE_SYSTEM_PREFIX_PATH="/usr/local;/usr"
-      -DCMAKE_C_COMPILER=/usr/bin/clang
-      -DCMAKE_CXX_COMPILER=/usr/bin/clang++
+      -DCMAKE_C_COMPILER="/usr/bin/clang"
+      -DCMAKE_CXX_COMPILER="/usr/bin/clang++"
       -DCMAKE_POLICY_DEFAULT_CMP0025=NEW
       -DCMAKE_POLICY_DEFAULT_CMP0060=NEW
       -DCMAKE_VERBOSE_MAKEFILE=ON
@@ -86,8 +86,8 @@ class Rspamd < Formula
       -DCMAKE_FIND_FRAMEWORK=LAST
       -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
       -DCMAKE_MAKE_PROGRAM=/usr/bin/make
-      -DCMAKE_MODULE_PATH="/usr/local/share/cmake/Modules"
-      -DCMAKE_PREFIX_PATH="/usr/local/share/cmake/Modules"
+      -DCMAKE_MODULE_PATH="/opt/local/share/cmake/Modules"
+      -DCMAKE_PREFIX_PATH="/opt/local/share/cmake/Modules"
       -DCMAKE_BUILD_WITH_INSTALL_RPATH:BOOL=ON
       -DCMAKE_INSTALL_RPATH="/usr/local/lib"
       -Wno-dev
@@ -111,7 +111,7 @@ class Rspamd < Formula
       -DRSPAMD_USER=_rspamd
       -DRUNDIR=/usr/local/var/run/rspamd
       -DCMAKE_OSX_DEPLOYMENT_TARGET="10.15"
-      -DCMAKE_OSX_SYSROOT=/Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk
+      -DCMAKE_OSX_SYSROOT="/Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk"
     ]
 
     #system "mkdir rspamd.build"
