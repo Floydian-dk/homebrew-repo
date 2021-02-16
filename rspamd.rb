@@ -50,11 +50,11 @@ class Rspamd < Formula
     ]
 
     args2 = %W[
-      -G \"CodeBlocks - Unix Makefiles\"
+      -G "CodeBlocks - Unix Makefiles"
       -DCMAKE_BUILD_TYPE=MacPorts
-      -DCMAKE_INSTALL_PREFIX=\"#{prefix}\"
+      -DCMAKE_INSTALL_PREFIX="#{prefix}"
       -DCMAKE_INSTALL_NAME_DIR="/usr/local/lib"
-      -DCMAKE_SYSTEM_PREFIX_PATH=\"/usr/local;/usr\"
+      -DCMAKE_SYSTEM_PREFIX_PATH="/usr/local;/usr"
       -DCMAKE_C_COMPILER="$CC"
       -DCMAKE_CXX_COMPILER="$CXX"
       -DCMAKE_POLICY_DEFAULT_CMP0025=NEW
@@ -92,6 +92,29 @@ class Rspamd < Formula
       -DCMAKE_OSX_DEPLOYMENT_TARGET="10.15"
       -DCMAKE_OSX_SYSROOT="/Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk"
     ]
+
+    # Setting up build environment
+    system "export CC='/usr/bin/clang'"
+    system "export CC_PRINT_OPTIONS='YES'"
+    system "export CC_PRINT_OPTIONS_FILE='#{buildpath}/.CC_PRINT_OPTIONS'"
+    system "export CFLAGS='-pipe -Os -DNDEBUG -I/usr/local/include -isysroot/Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk'"
+    system "export CPATH='/usr/local/include'"
+    system "export CPPFLAGS='-isysroot/Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk'"
+    system "export CXX='/usr/bin/clang++'"
+    system "export CXXFLAGS='-pipe -Os -DNDEBUG -I/usr/local/include -stdlib=libc++ -isysroot/Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk'"
+    system "export DEVELOPER_DIR='/Library/Developer/CommandLineTools'"
+    system "export F90FLAGS='-pipe -Os -m64'"
+    system "export FCFLAGS='-pipe -Os -m64'"
+    system "export FFLAGS='-pipe -Os -m64'"
+    system "export INSTALL='/usr/bin/install -c'"
+    system "export LDFLAGS='-L/usr/local/lib -Wl,-headerpad_max_install_names -Wl,-syslibroot,/Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk'"
+    system "export LIBRARY_PATH='/usr/local/lib'"
+    system "export MACOSX_DEPLOYMENT_TARGET='10.15'"
+    system "export OBJC='/usr/bin/clang'"
+    system "export OBJCFLAGS='-pipe -Os -I/usr/local/include -isysroot/Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk'"
+    system "export OBJCXX='/usr/bin/clang++'"
+    system "export OBJCXXFLAGS='-pipe -Os -DNDEBUG -I/usr/local/include -I/usr/local/include -stdlib=libc++ -isysroot/Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk'"
+    system "export SDKROOT='/Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk'"
 
     #system "mkdir rspamd.build"
     #system "cd rspamd.build"
