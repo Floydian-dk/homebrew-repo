@@ -41,13 +41,13 @@ class Rspamd < Formula
     ENV["FCFLAGS"] = "-pipe -Os -m64"
     ENV["FFLAGS"] = "-pipe -Os -m64"
     ENV["INSTALL"] = "/usr/bin/install -c"
-    ENV["LDFLAGS"] = "-L/usr/local/lib -Wl,-headerpad_max_install_names -Wl,-syslibroot,/Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk"
+    ENV["LDFLAGS"] = "-L/opt/local/lib -Wl,-headerpad_max_install_names -Wl,-syslibroot,/Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk"
     ENV["LIBRARY_PATH"] = "/usr/local/lib"
     ENV["MACOSX_DEPLOYMENT_TARGET"] = "10.15"
     ENV["OBJC"] = "/usr/bin/clang"
-    ENV["OBJCFLAGS"] = "-pipe -Os -I/usr/local/include -isysroot/Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk"
+    ENV["OBJCFLAGS"] = "-pipe -Os -I/opt/local/include -isysroot/Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk"
     ENV["OBJCXX"] = "/usr/bin/clang++"
-    ENV["OBJCXXFLAGS"] = "-pipe -Os -DNDEBUG -I/usr/local/include -I/usr/local/include -stdlib=libc++ -isysroot/Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk"
+    ENV["OBJCXXFLAGS"] = "-pipe -Os -DNDEBUG -I/opt/local/include -I/opt/local/include -stdlib=libc++ -isysroot/Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk"
     ENV["SDKROOT"] = "/Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk"
 
     args = %W[
@@ -76,7 +76,7 @@ class Rspamd < Formula
       -DCMAKE_BUILD_TYPE=MacPorts
       -DCMAKE_INSTALL_PREFIX="#{prefix}"
       -DCMAKE_INSTALL_NAME_DIR="/usr/local/lib"
-      -DCMAKE_SYSTEM_PREFIX_PATH="/usr;/usr/local"
+      -DCMAKE_SYSTEM_PREFIX_PATH="/usr/local;/usr"
       -DCMAKE_C_COMPILER=/usr/bin/clang
       -DCMAKE_CXX_COMPILER=/usr/bin/clang++
       -DCMAKE_POLICY_DEFAULT_CMP0025=NEW
