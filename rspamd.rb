@@ -54,6 +54,8 @@ class Rspamd < Formula
       -DCMAKE_INSTALL_PREFIX="#{prefix}"
       -DCMAKE_INSTALL_NAME_DIR="/usr/local/lib"
       -DCMAKE_SYSTEM_PREFIX_PATH="/usr/local;/usr"
+      -DCMAKE_C_COMPILER=$CC
+      -DCMAKE_CXX_COMPILER=$CXX
       -DCMAKE_POLICY_DEFAULT_CMP0025=NEW
       -DCMAKE_POLICY_DEFAULT_CMP0060=NEW
       -DCMAKE_VERBOSE_MAKEFILE=ON
@@ -93,13 +95,13 @@ class Rspamd < Formula
     # Setting up build environment
     #ccenv = %W[
       ENV["CMAKE_GENERATOR"] = "CodeBlocks - Unix Makefiles"
-      ENV["CC"] = "/usr/bin/clang"
+      ENV["CC"] = '/usr/bin/clang'
       ENV["CC_PRINT_OPTIONS"] = 'YES'
       ENV["CC_PRINT_OPTIONS_FILE"] = '#{buildpath}/.CC_PRINT_OPTIONS'
       ENV["CFLAGS"] = '-pipe -Os -DNDEBUG -I/usr/local/include -isysroot/Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk'
       ENV["CPATH"] = '/usr/local/include'
       ENV["CPPFLAGS"] = '-isysroot/Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk'
-      ENV["CXX"] = "/usr/bin/clang++"
+      ENV["CXX"] = '/usr/bin/clang++'
       ENV["CXXFLAGS"] = '-pipe -Os -DNDEBUG -I/usr/local/include -stdlib=libc++ -isysroot/Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk'
       ENV["DEVELOPER_DIR"] = '/Library/Developer/CommandLineTools'
       ENV["F90FLAGS"] = '-pipe -Os -m64'
