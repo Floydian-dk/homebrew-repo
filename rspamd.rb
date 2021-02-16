@@ -95,7 +95,7 @@ class Rspamd < Formula
 
     # Setting up build environment
     #ccenv = %W[
-      ENV["CC="] = "/usr/bin/clang"
+      ENV["CC"] = "/usr/bin/clang"
       ENV["CC_PRINT_OPTIONS"] = 'YES'
       ENV["CC_PRINT_OPTIONS_FILE"] = '#{buildpath}/.CC_PRINT_OPTIONS'
       ENV["CFLAGS"] = '-pipe -Os -DNDEBUG -I/usr/local/include -isysroot/Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk'
