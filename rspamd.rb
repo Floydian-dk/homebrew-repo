@@ -111,7 +111,7 @@ class Rspamd < Formula
       -DRSPAMD_USER=_rspamd
       -DRUNDIR=/usr/local/var/run/rspamd
       -DCMAKE_OSX_DEPLOYMENT_TARGET="10.15"
-      -DCMAKE_OSX_SYSROOT="/Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk"
+      -DCMAKE_OSX_SYSROOT=/Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk
     ]
 
     #system "mkdir rspamd.build"
