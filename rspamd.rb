@@ -51,11 +51,11 @@ class Rspamd < Formula
 
     args2 = %W[
       -G
-      "CodeBlocks\ -\ Unix\ Makefiles"
+      \"CodeBlocks\ -\ Unix\ Makefiles\"
       -DCMAKE_BUILD_TYPE=MacPorts
-      -DCMAKE_INSTALL_PREFIX="#{prefix}"
-      -DCMAKE_INSTALL_NAME_DIR="/usr/local/lib"
-      -DCMAKE_SYSTEM_PREFIX_PATH="/usr/local;/usr"
+      -DCMAKE_INSTALL_PREFIX=\"#{prefix}\"
+      -DCMAKE_INSTALL_NAME_DIR=\"/usr/local/lib\"
+      -DCMAKE_SYSTEM_PREFIX_PATH=\"/usr/local;/usr\"
       -DCMAKE_C_COMPILER="$CC"
       -DCMAKE_CXX_COMPILER="$CXX"
       -DCMAKE_POLICY_DEFAULT_CMP0025=NEW
@@ -65,10 +65,10 @@ class Rspamd < Formula
       -DCMAKE_FIND_FRAMEWORK=LAST
       -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
       -DCMAKE_MAKE_PROGRAM=/usr/bin/make
-      -DCMAKE_MODULE_PATH="/usr/local/share/cmake/Modules"
-      -DCMAKE_PREFIX_PATH="/usr/local/share/cmake/Modules"
+      -DCMAKE_MODULE_PATH=\"/usr/local/share/cmake/Modules\"
+      -DCMAKE_PREFIX_PATH=\"/usr/local/share/cmake/Modules\"
       -DCMAKE_BUILD_WITH_INSTALL_RPATH:BOOL=ON
-      -DCMAKE_INSTALL_RPATH="/usr/local/lib"
+      -DCMAKE_INSTALL_RPATH=\"/usr/local/lib\"
       -Wno-dev
       -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
       -DCMAKE_INSTALL_PREFIX=/usr/local
@@ -90,8 +90,8 @@ class Rspamd < Formula
       -DRSPAMD_USER=_rspamd
       -DRUNDIR=/usr/local/var/run/rspamd
       -DPCRE_ROOT_DIR=/usr/lib
-      -DCMAKE_OSX_DEPLOYMENT_TARGET="10.15"
-      -DCMAKE_OSX_SYSROOT="/Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk"
+      -DCMAKE_OSX_DEPLOYMENT_TARGET=\"10.15\"
+      -DCMAKE_OSX_SYSROOT=\"/Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk\"
     ]
 
     # Setting up build environment
