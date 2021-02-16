@@ -27,7 +27,7 @@ class Rspamd < Formula
   depends_on "cmake" => :build
 
   def install
-    ENV["CMAKE_GENERATOR"] = "CodeBlocks - Unix Makefiles"
+    #ENV["CMAKE_GENERATOR"] = "CodeBlocks - Unix Makefiles"
     ENV["CC"] = "/usr/bin/clang"
     ENV["CC_PRINT_OPTIONS"] = "YES"
     #ENV["CC_PRINT_OPTIONS_FILE"] = "'#{buildpath}/.CC_PRINT_OPTIONS'"
@@ -74,6 +74,16 @@ class Rspamd < Formula
 
     args2 = %w[
       -G"CodeBlocks - Unix Makefiles"
+      -DCC=/usr/bin/clang
+      -DCC_PRINT_OPTIONS=YES
+      -DCFLAGS="-pipe -Os -DNDEBUG -I/opt/local/include -isysroot/Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk"
+      -DCPATH="/usr/local/include"
+      -DCPPFLAGS="-isysroot/Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk"
+      -DDEVELOPER_DIR="/Library/Developer/CommandLineTools"
+      -DF90FLAGS="-pipe -Os -m64"
+      -DFCFLAGS="-pipe -Os -m64"
+      -DFFLAGS="-pipe -Os -m64"
+      -DOBJCXX="/usr/bin/clang++"
       -DCMAKE_BUILD_TYPE=MacPorts
       -DCMAKE_INSTALL_PREFIX="#{prefix}"
       -DCMAKE_INSTALL_NAME_DIR="/usr/local/lib"
