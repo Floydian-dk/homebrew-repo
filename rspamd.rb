@@ -54,8 +54,8 @@ class Rspamd < Formula
       -DCMAKE_INSTALL_PREFIX="#{prefix}"
       -DCMAKE_INSTALL_NAME_DIR="/usr/local/lib"
       -DCMAKE_SYSTEM_PREFIX_PATH="/usr/local;/usr"
-      -DCMAKE_C_COMPILER='/usr/bin/clang'
-      -DCMAKE_CXX_COMPILER='/usr/bin/clang++'
+      -DCMAKE_C_COMPILER=/usr/bin/clang
+      -DCMAKE_CXX_COMPILER=/usr/bin/clang++
       -DCMAKE_POLICY_DEFAULT_CMP0025=NEW
       -DCMAKE_POLICY_DEFAULT_CMP0060=NEW
       -DCMAKE_VERBOSE_MAKEFILE=ON
