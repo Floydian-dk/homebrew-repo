@@ -72,8 +72,8 @@ class Rspamd < Formula
       -DRUNDIR=#{var}/run/rspamd
     ]
 
-    args2 = %W[
-      -GCodeBlocks\ -\ Unix\ Makefiles
+    args2 = %w[
+      -G"CodeBlocks - Unix Makefiles"
       -DCMAKE_BUILD_TYPE=MacPorts
       -DCMAKE_INSTALL_PREFIX="#{prefix}"
       -DCMAKE_INSTALL_NAME_DIR="/usr/local/lib"
