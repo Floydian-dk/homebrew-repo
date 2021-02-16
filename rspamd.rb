@@ -50,8 +50,6 @@ class Rspamd < Formula
     ]
 
     args2 = %W[
-      -G
-      \"CodeBlocks\ \-\ Unix\ Makefiles\"
       -DCMAKE_BUILD_TYPE=MacPorts
       -DCMAKE_INSTALL_PREFIX=\"#{prefix}\"
       -DCMAKE_INSTALL_NAME_DIR=\"/usr/local/lib\"
@@ -96,6 +94,7 @@ class Rspamd < Formula
 
     # Setting up build environment
     #ccenv = %W[
+      ENV["CMAKE_GENERATOR"] = "CodeBlocks - Unix Makefiles"
       ENV["CC"] = "/usr/bin/clang"
       ENV["CC_PRINT_OPTIONS"] = 'YES'
       ENV["CC_PRINT_OPTIONS_FILE"] = '#{buildpath}/.CC_PRINT_OPTIONS'
