@@ -119,8 +119,8 @@ class Rspamd < Formula
     #system "cd rspamd.build"
     #system "cmake", ""
     system "/opt/local/bin/cmake", *args2
-    system "make"
-    system "make install"
+    #system "make"
+    #system "make install"
   end
 
   def caveats
