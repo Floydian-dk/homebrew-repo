@@ -25,7 +25,7 @@ class Dovecot < Formula
       --prefix=#{prefix}
       --disable-dependency-tracking
       --libexecdir=#{libexec}
-      --sysconfdir=/usr/local/Server/Mail/config/
+      --sysconfdir=/usr/local/Server/Mail/Config
       --localstatedir=#{var}
       --with-bzlib
       --with-pam
@@ -35,6 +35,7 @@ class Dovecot < Formula
       --with-ssl=openssl
       --with-zlib
       --with-solr
+      --with-docs=no
     ]
 
     system "./configure", *args
