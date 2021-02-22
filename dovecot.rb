@@ -25,7 +25,7 @@ class Dovecot < Formula
       --prefix=#{prefix}
       --disable-dependency-tracking
       --libexecdir=#{libexec}
-      --sysconfdir=/usr/local/Server/Mail/config/dovecot
+      --sysconfdir=/usr/local/Server/Mail/config/
       --localstatedir=#{var}
       --with-bzlib
       --with-pam
