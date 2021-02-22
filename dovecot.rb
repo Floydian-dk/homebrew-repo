@@ -11,6 +11,7 @@ class Dovecot < Formula
 
   depends_on "openssl@1.1"
   depends_on "mariadb@10.4"
+  depends_on "solr"
   uses_from_macos "bzip2"
   uses_from_macos "sqlite"
 
@@ -24,7 +25,7 @@ class Dovecot < Formula
       --prefix=#{prefix}
       --disable-dependency-tracking
       --libexecdir=#{libexec}
-      --sysconfdir=#{etc}
+      --sysconfdir=/usr/local/Server/Mail/config/dovecot
       --localstatedir=#{var}
       --with-bzlib
       --with-pam
