@@ -72,22 +72,22 @@ class Rspamd < Formula
       -DRUNDIR=#{var}/run/rspamd
     ]
 
-    args2 = %w[
-      -G"CodeBlocks - Unix Makefiles"
+    args2 = %W[
+      -G\"CodeBlocks - Unix Makefiles\"
       -DCC=/usr/bin/clang
       -DCC_PRINT_OPTIONS=YES
-      -DCFLAGS="-pipe -Os -DNDEBUG -I/opt/local/include -isysroot/Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk"
-      -DCPATH="/usr/local/include"
-      -DCPPFLAGS="-isysroot/Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk"
-      -DDEVELOPER_DIR="/Library/Developer/CommandLineTools"
-      -DF90FLAGS="-pipe -Os -m64"
-      -DFCFLAGS="-pipe -Os -m64"
-      -DFFLAGS="-pipe -Os -m64"
-      -DOBJCXX="/usr/bin/clang++"
+      -DCFLAGS=\"-pipe -Os -DNDEBUG -I/opt/local/include -isysroot/Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk\"
+      -DCPATH=\"/usr/local/include\"
+      -DCPPFLAGS=\"-isysroot/Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk\"
+      -DDEVELOPER_DIR=\"/Library/Developer/CommandLineTools\"
+      -DF90FLAGS=\"-pipe -Os -m64\"
+      -DFCFLAGS=\"-pipe -Os -m64\"
+      -DFFLAGS=\"-pipe -Os -m64\"
+      -DOBJCXX=\"/usr/bin/clang++\"
       -DCMAKE_BUILD_TYPE=Brew
-      -DCMAKE_INSTALL_PREFIX="#{prefix}"
-      -DCMAKE_INSTALL_NAME_DIR="/usr/local/lib"
-      -DCMAKE_SYSTEM_PREFIX_PATH="/usr/local;/usr"
+      -DCMAKE_INSTALL_PREFIX=\"#{prefix}\"
+      -DCMAKE_INSTALL_NAME_DIR=\"#{lib}\"
+      -DCMAKE_SYSTEM_PREFIX_PATH=\"/usr/local;/usr\"
       -DCMAKE_C_COMPILER=/usr/bin/clang
       -DCMAKE_CXX_COMPILER=/usr/bin/clang++
       -DCMAKE_POLICY_DEFAULT_CMP0025=NEW
@@ -97,10 +97,10 @@ class Rspamd < Formula
       -DCMAKE_FIND_FRAMEWORK=LAST
       -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
       -DCMAKE_MAKE_PROGRAM=/usr/bin/make
-      -DCMAKE_MODULE_PATH="/opt/local/share/cmake/Modules"
-      -DCMAKE_PREFIX_PATH="/opt/local/share/cmake/Modules"
+      -DCMAKE_MODULE_PATH=\"/opt/local/share/cmake/Modules\"
+      -DCMAKE_PREFIX_PATH=\"/opt/local/share/cmake/Modules\"
       -DCMAKE_BUILD_WITH_INSTALL_RPATH:BOOL=ON
-      -DCMAKE_INSTALL_RPATH="/usr/local/lib"
+      -DCMAKE_INSTALL_RPATH=\"#{lib}\"
       -Wno-dev
       -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
       -DCMAKE_INSTALL_PREFIX=/usr/local
@@ -121,7 +121,7 @@ class Rspamd < Formula
       -DPCRE_ROOT_DIR=/usr/lib
       -DRSPAMD_USER=_rspamd
       -DRUNDIR=/usr/local/var/run/rspamd
-      -DCMAKE_OSX_DEPLOYMENT_TARGET="10.15"
+      -DCMAKE_OSX_DEPLOYMENT_TARGET=\"10.15\"
       -DCMAKE_OSX_SYSROOT=/Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk
     ]
 
