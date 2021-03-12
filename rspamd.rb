@@ -51,9 +51,18 @@ class Rspamd < Formula
     ENV["SDKROOT"] = "/Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk"
 
     args = %W[
-      -G\"CodeBlocks - Unix Makefiles\"
+      -GCodeBlocks\ \-\ Unix\ Makefiles
       -DCMAKE_BUILD_TYPE=RelWithDebuginfo
+      -DCC_PRINT_OPTIONS=YES
       -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
+      -DCFLAGS=\-pipe\ \-Os\ \-DNDEBUG\ \-I/usr/local/include\ \-isysroot/Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk
+      -DCPATH=/usr/local/include
+      -DCPPFLAGS=\-isysroot/Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk
+      -DDEVELOPER_DIR=/Library/Developer/CommandLineTools
+      -DF90FLAGS=-pipe\ \-Os\ \-m64
+      -DFCFLAGS=\-pipe\ \-Os\ \-m64
+      -DFFLAGS=\-pipe\ \-Os\ \-m64
+      -DOBJCXX=/usr/bin/clang++
       -DCMAKE_INSTALL_PREFIX=#{prefix}
       -DCONFDIR=/usr/local/Server/Mail/Config/rspamd
       -DDBDIR=#{var}/lib/rspamd
