@@ -130,7 +130,7 @@ class Rspamd < Formula
     #system "cmake", ""
     #system "/opt/local/bin/cmake", *args2
 
-    system "/opt/local/bin/cmake", args
+    system "/opt/local/bin/cmake", *args
     #system "make"
     #system "make install"
   end
