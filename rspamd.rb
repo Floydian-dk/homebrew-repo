@@ -51,22 +51,26 @@ class Rspamd < Formula
     ENV["SDKROOT"] = "/Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk"
 
     args = %W[
+      -G\"CodeBlocks - Unix Makefiles\"
+      -DCMAKE_BUILD_TYPE=RelWithDebuginfo
       -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
       -DCMAKE_INSTALL_PREFIX=#{prefix}
       -DCONFDIR=/usr/local/Server/Mail/Config/rspamd
       -DDBDIR=#{var}/lib/rspamd
+      -DENABLE_LUAJIT=ON
+      -DNO_SHARED=ON
+      -DINSTALL_WEBUI=ON
+      -DENABLE_SNOWBALL=ON
+      -DENABLE_LIBUNWIND=ON
+      -DENABLE_LUA_REPL=ON
+      -DENABLE_HYPERSCAN=ON
       -DENABLE_FANN=ON
       -DENABLE_GD=ON
-      -DENABLE_HYPERSCAN=ON
-      -DENABLE_LIBUNWIND=ON
-      -DENABLE_LUAJIT=ON
-      -DENABLE_SNOWBALL=ON
       -DENABLE_TORCH=ON
       -DINSTALL_EXAMPLES=ON
       -DLIBDIR=#{lib}
       -DLOGDIR=/var/log/rspamd
       -DMANDIR=#{man}
-      -DNO_SHARED=ON
       -DPCRE_ROOT_DIR=/usr/lib
       -DRSPAMD_USER=_rspamd
       -DRUNDIR=#{var}/run/rspamd
