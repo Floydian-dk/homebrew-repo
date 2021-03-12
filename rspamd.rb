@@ -84,7 +84,7 @@ class Rspamd < Formula
       -DFCFLAGS="-pipe -Os -m64"
       -DFFLAGS="-pipe -Os -m64"
       -DOBJCXX="/usr/bin/clang++"
-      -DCMAKE_BUILD_TYPE=MacPorts
+      -DCMAKE_BUILD_TYPE=Brew
       -DCMAKE_INSTALL_PREFIX="#{prefix}"
       -DCMAKE_INSTALL_NAME_DIR="/usr/local/lib"
       -DCMAKE_SYSTEM_PREFIX_PATH="/usr/local;/usr"
