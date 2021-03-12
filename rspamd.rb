@@ -29,12 +29,12 @@ class Rspamd < Formula
   def install
     #ENV["CMAKE_GENERATOR"] = "CodeBlocks - Unix Makefiles"
     ENV["CC"] = "/usr/bin/clang"
+    ENV["CXX"] = "/usr/bin/clang++"
     ENV["CC_PRINT_OPTIONS"] = "YES"
     #ENV["CC_PRINT_OPTIONS_FILE"] = "'#{buildpath}/.CC_PRINT_OPTIONS'"
     ENV["CFLAGS"] = "-pipe -Os -DNDEBUG -I/opt/local/include -isysroot/Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk"
     ENV["CPATH"] = "/usr/local/include"
     ENV["CPPFLAGS"] = "-isysroot/Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk"
-    ENV["CXX"] = "/usr/bin/clang++"
     ENV["CXXFLAGS"] = "-pipe -Os -DNDEBUG -I/opt/local/include -stdlib=libc++ -isysroot/Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk"
     ENV["DEVELOPER_DIR"] = "/Library/Developer/CommandLineTools"
     ENV["F90FLAGS"] = "-pipe -Os -m64"
@@ -53,25 +53,30 @@ class Rspamd < Formula
     args = %W[
       -GCodeBlocks\ \-\ Unix\ Makefiles
       -DCMAKE_BUILD_TYPE=RelWithDebuginfo
-      -DCC_PRINT_OPTIONS=YES
+      -DCMAKE_INSTALL_PREFIX="#{prefix}"
+      -DCMAKE_INSTALL_NAME_DIR="#{lib}"
+      -DCMAKE_SYSTEM_PREFIX_PATH="/usr/local;/usr"
+      -DCMAKE_C_COMPILER="$CC"
+      -DCMAKE_CXX_COMPILER="$CXX"
+      -DCMAKE_POLICY_DEFAULT_CMP0025=NEW
+      -DCMAKE_POLICY_DEFAULT_CMP0060=NEW
+      -DCMAKE_VERBOSE_MAKEFILE=ON
+      -DCMAKE_COLOR_MAKEFILE=ON
+      -DCMAKE_FIND_FRAMEWORK=LAST
       -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
-      -DCFLAGS=\-pipe\ \-Os\ \-DNDEBUG\ \-I/usr/local/include\ \-isysroot/Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk
-      -DCPATH=/usr/local/include
-      -DCPPFLAGS=\-isysroot/Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk
-      -DDEVELOPER_DIR=/Library/Developer/CommandLineTools
-      -DF90FLAGS=-pipe\ \-Os\ \-m64
-      -DFCFLAGS=\-pipe\ \-Os\ \-m64
-      -DFFLAGS=\-pipe\ \-Os\ \-m64
-      -DOBJCXX=/usr/bin/clang++
-      -DCMAKE_INSTALL_PREFIX=#{prefix}
+      -DCMAKE_MAKE_PROGRAM=/usr/bin/make
+      -DCMAKE_MODULE_PATH="/usr/local/share/cmake/Modules"
+      -DCMAKE_PREFIX_PATH="/usr/local/share/cmake/Modules"
+      -DCMAKE_BUILD_WITH_INSTALL_RPATH:BOOL=ON
+      -DCMAKE_INSTALL_RPATH="#{lib}"
+      -Wno-dev
+      -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
       -DCONFDIR=/usr/local/Server/Mail/Config/rspamd
       -DDBDIR=#{var}/lib/rspamd
       -DENABLE_LUAJIT=ON
       -DNO_SHARED=ON
-      -DINSTALL_WEBUI=ON
       -DENABLE_SNOWBALL=ON
       -DENABLE_LIBUNWIND=ON
-      -DENABLE_LUA_REPL=ON
       -DENABLE_HYPERSCAN=ON
       -DENABLE_FANN=ON
       -DENABLE_GD=ON
@@ -83,7 +88,13 @@ class Rspamd < Formula
       -DPCRE_ROOT_DIR=/usr/lib
       -DRSPAMD_USER=_rspamd
       -DRUNDIR=#{var}/run/rspamd
+      -DCMAKE_OSX_DEPLOYMENT_TARGET="10.15"
+      -DCMAKE_OSX_SYSROOT="/Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk"
+      -DCC_PRINT_OPTIONS=YES
     ]
+#    -DENABLE_LIBUNWIND=ON
+#    -DENABLE_LUA_REPL=ON
+
 
     args2 = %W[
       -G\"CodeBlocks - Unix Makefiles\"
@@ -143,7 +154,7 @@ class Rspamd < Formula
     #system "cmake", ""
     #system "/opt/local/bin/cmake", *args2
 
-    system "/opt/local/bin/cmake", *args
+    system "/opt/local/bin/cmake", *args, "#{buildpath}"
     #system "make"
     #system "make install"
   end
