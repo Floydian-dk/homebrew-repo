@@ -53,11 +53,11 @@ class Rspamd < Formula
     args = %W[
       -GCodeBlocks\ \-\ Unix\ Makefiles
       -DCMAKE_BUILD_TYPE=RelWithDebuginfo
-      -DCMAKE_INSTALL_PREFIX="#{prefix}"
-      -DCMAKE_INSTALL_NAME_DIR="#{lib}"
-      -DCMAKE_SYSTEM_PREFIX_PATH="/usr/local;/usr"
-      -DCMAKE_C_COMPILER="$CC"
-      -DCMAKE_CXX_COMPILER="$CXX"
+      -DCMAKE_INSTALL_PREFIX=#{prefix}
+      -DCMAKE_INSTALL_NAME_DIR=#{lib}
+      -DCMAKE_SYSTEM_PREFIX_PATH=/usr/local;/usr
+      -DCMAKE_C_COMPILER=$CC
+      -DCMAKE_CXX_COMPILER=$CXX
       -DCMAKE_POLICY_DEFAULT_CMP0025=NEW
       -DCMAKE_POLICY_DEFAULT_CMP0060=NEW
       -DCMAKE_VERBOSE_MAKEFILE=ON
@@ -65,10 +65,10 @@ class Rspamd < Formula
       -DCMAKE_FIND_FRAMEWORK=LAST
       -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
       -DCMAKE_MAKE_PROGRAM=/usr/bin/make
-      -DCMAKE_MODULE_PATH="/usr/local/share/cmake/Modules"
-      -DCMAKE_PREFIX_PATH="/usr/local/share/cmake/Modules"
+      -DCMAKE_MODULE_PATH=/usr/local/share/cmake/Modules
+      -DCMAKE_PREFIX_PATH=/usr/local/share/cmake/Modules
       -DCMAKE_BUILD_WITH_INSTALL_RPATH:BOOL=ON
-      -DCMAKE_INSTALL_RPATH="#{lib}"
+      -DCMAKE_INSTALL_RPATH=#{lib}
       -Wno-dev
       -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
       -DCONFDIR=/usr/local/Server/Mail/Config/rspamd
@@ -88,8 +88,8 @@ class Rspamd < Formula
       -DPCRE_ROOT_DIR=/usr/lib
       -DRSPAMD_USER=_rspamd
       -DRUNDIR=#{var}/run/rspamd
-      -DCMAKE_OSX_DEPLOYMENT_TARGET="10.15"
-      -DCMAKE_OSX_SYSROOT="/Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk"
+      -DCMAKE_OSX_DEPLOYMENT_TARGET=10.15
+      -DCMAKE_OSX_SYSROOT=/Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk
       -DCC_PRINT_OPTIONS=YES
     ]
 #    -DENABLE_LIBUNWIND=ON
