@@ -91,6 +91,7 @@ class Rspamd < Formula
       -DCMAKE_OSX_DEPLOYMENT_TARGET=10.15
       -DCMAKE_OSX_SYSROOT=/Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk
       -DCC_PRINT_OPTIONS=YES
+      -DENABLE_FULL_DEBUG=ON
     ]
 #    -DENABLE_LIBUNWIND=ON
 #    -DENABLE_LUA_REPL=ON
