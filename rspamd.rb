@@ -11,7 +11,7 @@ class Rspamd < Formula
   depends_on "libsodium"
 
   depends_on "openssl@1.1"
-  depends_on "icu4c"
+  #depends_on "icu4c" <- Disabled. Cause x86 issues for some reason.
   depends_on "glib"
   depends_on "ragel"
   depends_on "lua"
@@ -71,7 +71,7 @@ class Rspamd < Formula
       -DCMAKE_INSTALL_RPATH=#{lib}
       -Wno-dev
       -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
-      -DCONFDIR=/usr/local/Server/Mail/Config/rspamd
+      -DCONFDIR=#{etc}/rspamd
       -DDBDIR=/usr/local/Server/Mail/Config/Data/rspamd
       -DENABLE_LUAJIT=ON
       -DNO_SHARED=ON
@@ -80,7 +80,7 @@ class Rspamd < Formula
       -DENABLE_HYPERSCAN=ON
       -DENABLE_FANN=ON
       -DLIBDIR=#{lib}
-      -DLOGDIR=/usr/local/var/log/rspamd
+      -DLOGDIR=#{var}/log/rspamd
       -DMANDIR=#{man}
       -DPCRE_ROOT_DIR=/usr/lib
       -DRSPAMD_USER=_rspamd
@@ -98,10 +98,10 @@ class Rspamd < Formula
     #system "cd rspamd.build"
     #system "cmake", ""
     #system "/opt/local/bin/cmake", *args2
-    system "printenv"
+    #system "printenv"
     system "/usr/local/bin/cmake", *args, "#{buildpath}"
     system "make"
-    #system "make install"
+    system "make install"
   end
 
   def caveats
