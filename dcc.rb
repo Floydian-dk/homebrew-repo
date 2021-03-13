@@ -4,7 +4,7 @@ class Dcc < Formula
   url "https://www.dcc-servers.net/dcc/source/dcc.tar.Z"
   sha256  "e5da87aca80ddc8bc52fa93869576a2afaf0c1e563e3f97dee6e6531690fbad5"
   license "Free only to organizations that participate in the global DCC network"
-
+  version "2.3.167"
   depends_on "pkg-config" => :build
 
   def install
