@@ -18,7 +18,7 @@ class Rspamd < Formula
   depends_on "luajit"
   depends_on "sqlite"
   depends_on "libmagic"
-  depends_on "pcre"
+  #depends_on "pcre"
   depends_on "hyperscan"
   depends_on "zlib"
   depends_on "hiredis"
