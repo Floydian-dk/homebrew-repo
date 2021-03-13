@@ -18,7 +18,6 @@ class Dcc < Formula
       --enable-64-bits
       --disable-dccm
       --with-uid=_rspamd
-      --with-installroot=#{HOMEBREW_PREFIX}
     ]
 
     system "./configure", *args
