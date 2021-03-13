@@ -156,7 +156,7 @@ class Rspamd < Formula
     #system "cmake", ""
     #system "/opt/local/bin/cmake", *args2
     system "printenv"
-    system "/opt/local/bin/cmake", *args, "#{buildpath}"
+    system "/usr/local/bin/cmake", *args, "#{buildpath}"
     #system "make"
     #system "make install"
   end
