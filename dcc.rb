@@ -18,6 +18,7 @@ class Dcc < Formula
       --enable-64-bits
       --disable-dccm
       --with-uid=_rspamd
+      --disable-sys-inst
     ]
 
     system "./configure", *args
