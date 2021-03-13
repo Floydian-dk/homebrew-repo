@@ -1,4 +1,4 @@
-class Bind < Formula
+class dcc < Formula
   desc "FLOYD Custom Implementation The Distributed Checksum Clearinghouses or DCC"
   homepage "https://www.dcc-servers.net/dcc/"
   url "https://www.dcc-servers.net/dcc/source/dcc.tar.Z"
