@@ -28,6 +28,7 @@ class Rspamd < Formula
 
   def install
     #ENV["CMAKE_GENERATOR"] = "CodeBlocks - Unix Makefiles"
+    ENV["PATH"] = "/usr/local/Homebrew/Library/Homebrew/shims/mac/super:/usr/local/opt/cmake/bin:/opt/local/bin:/opt/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin"
     ENV["CC"] = "/usr/bin/clang"
     ENV["CXX"] = "/usr/bin/clang++"
     ENV["CC_PRINT_OPTIONS"] = "YES"
