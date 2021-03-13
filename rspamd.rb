@@ -72,7 +72,7 @@ class Rspamd < Formula
       -Wno-dev
       -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
       -DCONFDIR=/usr/local/Server/Mail/Config/rspamd
-      -DDBDIR=#{var}/lib/rspamd
+      -DDBDIR=/usr/local/Server/Mail/Config/Data/rspamd
       -DENABLE_LUAJIT=ON
       -DNO_SHARED=ON
       -DENABLE_SNOWBALL=ON
@@ -80,7 +80,7 @@ class Rspamd < Formula
       -DENABLE_HYPERSCAN=ON
       -DENABLE_FANN=ON
       -DLIBDIR=#{lib}
-      -DLOGDIR=/var/log/rspamd
+      -DLOGDIR=/usr/local/var/log/rspamd
       -DMANDIR=#{man}
       -DPCRE_ROOT_DIR=/usr/lib
       -DRSPAMD_USER=_rspamd
@@ -99,8 +99,8 @@ class Rspamd < Formula
     #system "/opt/local/bin/cmake", *args2
     system "printenv"
     system "/usr/local/bin/cmake", *args, "#{buildpath}"
-    #system "make"
-    #system "make install"
+    system "make"
+    system "make install"
   end
 
   def caveats
