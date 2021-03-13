@@ -72,7 +72,7 @@ class Rspamd < Formula
       -Wno-dev
       -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
       -DCONFDIR=#{etc}/rspamd
-      -DDBDIR=/usr/local/Server/Mail/Config/Data/rspamd
+      -DDBDIR=/usr/local/Server/Mail/Data/rspamd
       -DENABLE_LUAJIT=ON
       -DNO_SHARED=ON
       -DENABLE_SNOWBALL=ON
