@@ -101,7 +101,7 @@ class Rspamd < Formula
     system "printenv"
     system "/usr/local/bin/cmake", *args, "#{buildpath}"
     system "make"
-    system "make install"
+    #system "make install"
   end
 
   def caveats
