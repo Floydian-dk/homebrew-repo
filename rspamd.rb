@@ -88,6 +88,7 @@ class Rspamd < Formula
       -DCMAKE_OSX_DEPLOYMENT_TARGET=10.15
       -DCMAKE_OSX_SYSROOT=/Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk
       -DENABLE_FULL_DEBUG=ON
+      -DCMAKE_OSX_ARCHITECTURES="x86_64"
     ]
 #    -DENABLE_LIBUNWIND=ON
 #    -DENABLE_LUA_REPL=ON
