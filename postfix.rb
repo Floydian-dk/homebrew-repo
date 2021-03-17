@@ -70,9 +70,8 @@ class Postfix < Formula
     ]
 
     system "make",
-#    "-f",
-#    "Makefile.init",
     "makefiles",
+    "CC=#{ENV.cc}",
     "CCARGS=-DDEF_CONFIG_DIR=\\\"/usr/local/Server/Mail/Config/postfix\\\" -DUSE_SASL_AUTH -DDEF_SERVER_SASL_TYPE=\\\"dovecot\\\" -DDEF_COMMAND_DIR=\\\"/usr/local/sbin\\\" -DDEF_DAEMON_DIR=\\\"/usr/local/libexec/postfix\\\" -DUSE_TLS -DHAS_PCRE -I/usr/local/include -DHAS_SSL -I/usr/local/opt/openssl@1.1 -DHAS_MYSQL -I/usr/local/opt/mariadb/include/mysql",
     "AUXLIBS_PCRE=-L/usr/local/lib -lpcre",
     "AUXLIBS_MYSQL=-L#{Formula["mariadb"].opt_prefix}/lib -R#{Formula["mariadb"].opt_prefix}/lib -lmysqlclient -lz -lm"
