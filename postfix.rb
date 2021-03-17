@@ -11,7 +11,7 @@ class Postfix < Formula
   depends_on "mariadb"
   depends_on "pcre"
   depends_on "icu4c"
-  depened_on "berkeley-db@4" => :build
+  depends_on "berkeley-db@4" => :build
 
 
   def install
