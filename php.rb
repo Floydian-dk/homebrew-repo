@@ -12,12 +12,6 @@ class Php < Formula
     regex(/PHP (\d+(?:\.\d+)+) /i)
   end
 
-  bottle do
-    sha256 catalina:    "b4bf7b37671bf26dec1986a3be42416fb41e731b6d632f02fb2bc968379d4022"
-    sha256 mojave:      "983da87997888992e345cc5bbae84ab1bd1e20503c5a171a66533744001d1e9e"
-    sha256 high_sierra: "7c8107f2c86c99cce71c35a9ce42ab4d88e35c7475a706bef1533d18c0f22982"
-  end
-
   head do
     url "https://github.com/php/php-src.git"
 
