@@ -1,14 +1,20 @@
 class Dovecot < Formula
   desc "IMAP/POP3 server"
   homepage "https://dovecot.org/"
-  url "https://dovecot.org/releases/2.3/dovecot-2.3.17.tar.gz"
-  sha256 "224412cd77a23a3ffb857da294da200883d956082cff7257942eff2789bd2df9"
+  url "https://dovecot.org/releases/2.3/dovecot-2.3.17.1.tar.gz"
+  sha256 "1c67ccccdc81a75007c01dedc02ad608c4d856c60a6b89b9cd246e79f72aa2b8"
   license all_of: ["BSD-3-Clause", "LGPL-2.1-or-later", "MIT", "Unicode-DFS-2016", :public_domain]
 
   livecheck do
     url "https://www.dovecot.org/download/"
     regex(/href=.*?dovecot[._-]v?(\d+(?:\.\d+)+)\.t/i)
   end
+
+  #bottle do
+  #  rebuild 1
+  #  root_url "https://floyd.dk"
+  #  sha256 catalina: "09432e7bbba505aa9f443cb410c5a11f39bb7e4461f56432d22fa6956ccf5eaa"
+  #end
 
   depends_on "openssl@1.1"
   depends_on "mariadb"
@@ -17,8 +23,8 @@ class Dovecot < Formula
   uses_from_macos "sqlite"
 
   resource "pigeonhole" do
-    url "https://pigeonhole.dovecot.org/releases/2.3/dovecot-2.3-pigeonhole-0.5.17.tar.gz", using: :homebrew_curl
-    sha256 "031e823966c53121e289b3ecdcfa4bc35ed9d22ecbf5d93a8eb140384e78d648"
+    url "https://pigeonhole.dovecot.org/releases/2.3/dovecot-2.3-pigeonhole-0.5.17.1.tar.gz", using: :homebrew_curl
+    sha256 "3cc4a3de6d7e27bd99ac59b99faa161287f78167272699a22591798ffcf84512"
   end
 
   def install
