@@ -2,7 +2,7 @@ class Rspamd < Formula
   desc "Rspamd mail filtering system."
   homepage "https://rspamd.com"
   url "https://github.com/rspamd/rspamd/archive/refs/tags/3.1.tar.gz"
-  sha256 "c8ec66e3629b35fe077f2c46821fc4d3d514d33b12bac4c16cefff9f3c482252"
+  sha256 "7f37514f16f4d194cacaef9f54eeead73ae2c208bc4439fd7f1de4e220f9db30"
   license "Apache-2"
 
   depends_on "pkg-config"
