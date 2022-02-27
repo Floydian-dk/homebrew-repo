@@ -81,7 +81,7 @@ class Fail2ban < Formula
     inreplace "setup.py", "platform_system in ('linux',", "platform_system in ('linux', 'darwin',"
 
     system "./fail2ban-2to3"
-    system "python3", "setup.py", "install", "--prefix=#{libexec}"
+    system "python3", "setup.py", "install", "--prefix=#{libexec}", "--user"
 
     cd "doc" do
       system "make", "dirhtml", "SPHINXBUILD=sphinx-build"
