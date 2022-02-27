@@ -13,7 +13,7 @@ class Fail2ban < Formula
 
   depends_on "help2man" => :build
   depends_on "sphinx-doc" => :build
-  depends_on "python@3.10"
+  depends_on "python@3.9"
 
   # fixes https://github.com/fail2ban/fail2ban/issues/3098 remove in the next release
   patch do
@@ -28,8 +28,8 @@ class Fail2ban < Formula
   end
 
   def install
-    ENV.prepend_create_path "PYTHONPATH", libexec/Language::Python.site_packages("python3")
-    ENV["PYTHON"] = which("python3")
+    ENV.prepend_create_path "PYTHONPATH", libexec/"lib/python3.9/site-packages"
+     ENV["PYTHON"] = Formula["python@3.9"].opt_bin/"python3"
 
     rm "setup.cfg"
     Dir["config/paths-*.conf"].each do |r|
