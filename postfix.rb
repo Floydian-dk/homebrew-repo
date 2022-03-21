@@ -8,7 +8,7 @@ class Postfix < Formula
   license "IBMPL-1 EPL-2"
 
   depends_on "openssl@1.1"
-  depends_on "mariadb"
+  #depends_on "mariadb"
   depends_on "pcre"
   depends_on "icu4c"
   depends_on "berkeley-db@4" => :build
