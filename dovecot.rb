@@ -17,7 +17,7 @@ class Dovecot < Formula
   #end
 
   depends_on "openssl@1.1"
-  depends_on "mariadb"
+  depends_on "mariadb@10.6"
   depends_on "solr"
   uses_from_macos "bzip2"
   uses_from_macos "sqlite"
