@@ -8,7 +8,7 @@ class Postfix < Formula
   license "IBMPL-1 EPL-2"
 
   depends_on "openssl@1.1"
-  #depends_on "mariadb"
+  depends_on "mariadb@10.6"
   depends_on "pcre"
   depends_on "icu4c"
   depends_on "berkeley-db@4" => :build
@@ -34,7 +34,7 @@ class Postfix < Formula
       -DUSE_TLS
       -DHAS_PCRE -I/usr/local/include
       -DHAS_SSL -I#{Formula["openssl@1.1"].opt_prefix}
-      -DHAS_MYSQL -I#{Formula["mariadb"].opt_prefix}/include/mysql'
+      -DHAS_MYSQL -I#{Formula["mariadb@10.6"].opt_prefix}/include/mysql'
     ]
 
     auxlibspcre =%W[
@@ -43,8 +43,8 @@ class Postfix < Formula
     ]
 
     auxlibsmysql =%W[
-      AUXLIBS_MYSQL='-L#{Formula["mariadb"].opt_prefix}/lib
-      -R#{Formula["mariadb"].opt_prefix}/lib
+      AUXLIBS_MYSQL='-L#{Formula["mariadb@10.6"].opt_prefix}/lib
+      -R#{Formula["mariadb@10.6"].opt_prefix}/lib
       -lmysqlclient
       -lz
       -lm'
@@ -77,7 +77,7 @@ class Postfix < Formula
     "CCARGS=-DDEF_CONFIG_DIR=\\\"/usr/local/Server/Mail/Config/postfix\\\" -DUSE_SASL_AUTH -DDEF_SERVER_SASL_TYPE=\\\"dovecot\\\" -DDEF_COMMAND_DIR=\\\"/usr/local/sbin\\\" -DDEF_DAEMON_DIR=\\\"/usr/local/libexec/postfix\\\" -DUSE_TLS -DHAS_PCRE -I/usr/local/include -DHAS_SSL -I/usr/local/opt/openssl@1.1 -DHAS_MYSQL -I/usr/local/opt/mariadb/include/mysql -I/usr/local/include",
     "AUXLIBS=-ldb",
     "AUXLIBS_PCRE=-L/usr/local/lib -lpcre",
-    "AUXLIBS_MYSQL=-L#{Formula["mariadb"].opt_prefix}/lib -R#{Formula["mariadb"].opt_prefix}/lib -lmysqlclient -lz -lm"
+    "AUXLIBS_MYSQL=-L#{Formula["mariadb@10.6"].opt_prefix}/lib -R#{Formula["mariadb@10.6"].opt_prefix}/lib -lmysqlclient -lz -lm"
     system "make"
 
     system "/bin/sh", "postfix-install", *args5
