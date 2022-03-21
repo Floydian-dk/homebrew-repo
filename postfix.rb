@@ -74,7 +74,7 @@ class Postfix < Formula
 #    "Makefile.init",
     "makefiles",
     "CC=#{ENV.cc}",
-    "CCARGS=-DDEF_CONFIG_DIR=\\\"/usr/local/Server/Mail/Config/postfix\\\" -DUSE_SASL_AUTH -DDEF_SERVER_SASL_TYPE=\\\"dovecot\\\" -DDEF_COMMAND_DIR=\\\"/usr/local/sbin\\\" -DDEF_DAEMON_DIR=\\\"/usr/local/libexec/postfix\\\" -DUSE_TLS -DHAS_PCRE -I/usr/local/include -DHAS_SSL -I/usr/local/opt/openssl@1.1 -DHAS_MYSQL -I/usr/local/opt/mariadb/include/mysql -I/usr/local/include",
+    "CCARGS=-DDEF_CONFIG_DIR=\\\"/usr/local/Server/Mail/Config/postfix\\\" -DUSE_SASL_AUTH -DDEF_SERVER_SASL_TYPE=\\\"dovecot\\\" -DDEF_COMMAND_DIR=\\\"/usr/local/sbin\\\" -DDEF_DAEMON_DIR=\\\"/usr/local/libexec/postfix\\\" -DUSE_TLS -DHAS_PCRE -I/usr/local/include -DHAS_SSL -I/usr/local/opt/openssl@1.1 -DHAS_MYSQL -I{Formula["mariadb@10.6"].opt_prefix}/include/mysql -I/usr/local/include",
     "AUXLIBS=-ldb",
     "AUXLIBS_PCRE=-L/usr/local/lib -lpcre",
     "AUXLIBS_MYSQL=-L#{Formula["mariadb@10.6"].opt_prefix}/lib -R#{Formula["mariadb@10.6"].opt_prefix}/lib -lmysqlclient -lz -lm"
