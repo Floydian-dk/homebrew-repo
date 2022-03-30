@@ -2,14 +2,14 @@ class Postfix < Formula
   desc "Fast and robust mail transfer agent, Custom version for FLOYD Interactive"
   homepage "http://www.postfix.org"
   # Should only be updated if the new version is announced on the homepage, http://www.postfix.org
-  url "https://de.postfix.org/ftpmirror/official/postfix-3.5.15.tar.gz"
-  mirror "ftp://ftp.pca.dfn.de/pub/tools/net/postfix/official/postfix-3.5.15.tar.gz"
-  sha256 "555edacf374d29c2ffe3f0efc401e9d9ae8553ff6abf8eea0deec813f0175988"
+  url "https://de.postfix.org/ftpmirror/official/postfix-3.6.5.tar.gz"
+  mirror "ftp://ftp.pca.dfn.de/pub/tools/net/postfix/official/postfix-3.6.5.tar.gz"
+  sha256 "300fa8811cea20d01d25c619d359bffab82656e704daa719e0c9afc4ecff4808"
   license "IBMPL-1 EPL-2"
 
   depends_on "openssl@1.1"
   depends_on "mariadb@10.6"
-  depends_on "pcre"
+  depends_on "pcre2"
   depends_on "icu4c"
   depends_on "berkeley-db@4" => :build
 
@@ -38,8 +38,8 @@ class Postfix < Formula
     ]
 
     auxlibspcre =%W[
-      AUXLIBS_PCRE='-L/usr/local/lib
-      -lpcre'
+      AUXLIBS_PCRE='-L#{Formula["pcre2"].opt_prefix}/lib
+      -lpcre2-8'
     ]
 
     auxlibsmysql =%W[
@@ -74,9 +74,9 @@ class Postfix < Formula
 #    "Makefile.init",
     "makefiles",
     "CC=#{ENV.cc}",
-    "CCARGS=-DDEF_CONFIG_DIR=\\\"/usr/local/Server/Mail/Config/postfix\\\" -DUSE_SASL_AUTH -DDEF_SERVER_SASL_TYPE=\\\"dovecot\\\" -DDEF_COMMAND_DIR=\\\"/usr/local/sbin\\\" -DDEF_DAEMON_DIR=\\\"/usr/local/libexec/postfix\\\" -DUSE_TLS -DHAS_PCRE -I/usr/local/include -DHAS_SSL -I/usr/local/opt/openssl@1.1 -DHAS_MYSQL -I#{Formula["mariadb@10.6"].opt_prefix}/include/mysql -I/usr/local/include",
+    "CCARGS=-DDEF_CONFIG_DIR=\\\"/usr/local/Server/Mail/Config/postfix\\\" -DUSE_SASL_AUTH -DDEF_SERVER_SASL_TYPE=\\\"dovecot\\\" -DDEF_COMMAND_DIR=\\\"/usr/local/sbin\\\" -DDEF_DAEMON_DIR=\\\"/usr/local/libexec/postfix\\\" -DUSE_TLS -DHAS_PCRE -I/usr/local/include -DHAS_SSL -I#{Formula["openssl@1.1"].opt_prefix} -DHAS_MYSQL -I#{Formula["mariadb@10.6"].opt_prefix}/include/mysql -I/usr/local/include",
     "AUXLIBS=-ldb",
-    "AUXLIBS_PCRE=-L/usr/local/lib -lpcre",
+    "AUXLIBS_PCRE=-L#{Formula["pcre2"].opt_prefix}/lib -lpcre2-8",
     "AUXLIBS_MYSQL=-L#{Formula["mariadb@10.6"].opt_prefix}/lib -R#{Formula["mariadb@10.6"].opt_prefix}/lib -lmysqlclient -lz -lm"
     system "make"
 
