@@ -9,7 +9,7 @@ class Postfix < Formula
 
   depends_on "openssl@1.1"
   depends_on "mariadb@10.6"
-  depends_on "pcre2"
+  depends_on "pcre2" => :build
   depends_on "icu4c"
   depends_on "berkeley-db@4" => :build
 
