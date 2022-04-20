@@ -2,9 +2,9 @@ class Postfix < Formula
   desc "Fast and robust mail transfer agent, Custom version for FLOYD Interactive"
   homepage "http://www.postfix.org"
   # Should only be updated if the new version is announced on the homepage, http://www.postfix.org
-  url "https://de.postfix.org/ftpmirror/official/postfix-3.6.5.tar.gz"
-  mirror "ftp://ftp.pca.dfn.de/pub/tools/net/postfix/official/postfix-3.6.5.tar.gz"
-  sha256 "300fa8811cea20d01d25c619d359bffab82656e704daa719e0c9afc4ecff4808"
+  url "https://de.postfix.org/ftpmirror/official/postfix-3.6.6.tar.gz"
+  mirror "ftp://ftp.pca.dfn.de/pub/tools/net/postfix/official/postfix-3.6.6.tar.gz"
+  sha256 "098a714f410468efe26e2191dc8f31cba4507d5bf488f56f9eb5545e3686f0d6"
   license "IBMPL-1 EPL-2"
 
   depends_on "openssl@1.1"
