@@ -8,11 +8,11 @@ class Bind < Formula
   # "version_scheme" because someone upgraded to 9.15.0, and required a
   # downgrade.
 
-  url "https://downloads.isc.org/isc/bind9/9.16.29/bind-9.16.29.tar.xz"
-  sha256 "c8408f98ebbd566fc396a28cbda2d94d57efcb98a359618866dec229c8907466"
+  url "https://downloads.isc.org/isc/bind9/9.18.4/bind-9.18.4.tar.xz"
+  sha256 "f277ae50159a00c300eb926a9c5d51953038a936bd8242d6913dfb6eac42761d"
   license "MPL-2.0"
   version_scheme 1
-  head "https://gitlab.isc.org/isc-projects/bind9.git"
+  head "https://gitlab.isc.org/isc-projects/bind9.git", branch: "main"
 
   # BIND indicates stable releases with an even-numbered minor (e.g., x.2.x)
   # and the regex below only matches these versions.
@@ -24,43 +24,21 @@ class Bind < Formula
   depends_on "pkg-config" => :build
   depends_on "json-c"
   depends_on "libidn2"
+  depends_on "libnghttp2"
   depends_on "libuv"
   depends_on "openssl@1.1"
-  depends_on "python@3.9"
-
-  resource "ply" do
-    url "https://files.pythonhosted.org/packages/e5/69/882ee5c9d017149285cab114ebeab373308ef0f874fcdac9beb90e0ac4da/ply-3.11.tar.gz"
-    sha256 "00c7c1aaa88358b9c765b6d3000c6eec0ba42abca5351b095321aef446081da3"
-  end
 
   def install
-    xy = Language::Python.major_minor_version Formula["python@3.9"].opt_bin/"python3"
-    vendor_site_packages = libexec/"vendor/lib/python#{xy}/site-packages"
-    ENV.prepend_create_path "PYTHONPATH", vendor_site_packages
-    resources.each do |r|
-      r.stage do
-        system Formula["python@3.9"].opt_bin/"python3", *Language::Python.setup_install_args(libexec/"vendor")
-      end
-    end
-
-    # Fix "configure: error: xml2-config returns badness"
-    ENV["SDKROOT"] = MacOS.sdk_path if MacOS.version <= :sierra
-
     args = [
       "--prefix=#{prefix}",
       "--sysconfdir=#{pkgetc}",
-      "--with-json-c",
-      "--with-openssl=#{Formula["openssl@1.1"].opt_prefix}",
-      "--with-libjson=#{Formula["json-c"].opt_prefix}",
-      "--with-python-install-dir=#{vendor_site_packages}",
-      "--with-python=#{Formula["python@3.9"].opt_bin}/python3",
-      "--without-lmdb",
-      "--with-libidn2=#{Formula["libidn2"].opt_prefix}",
-      "--infodir=#{info}",
-      "--sysconfdir=#{etc}",
       "--localstatedir=#{var}",
+      "--with-json-c",
+      "--with-libidn2=#{Formula["libidn2"].opt_prefix}",
+      "--with-openssl=#{Formula["openssl@1.1"].opt_prefix}",
+      "--without-lmdb",
+      "--infodir=#{info}",
       "--mandir=#{man}",
-
     ]
     system "./configure", *args
 
