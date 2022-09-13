@@ -10,7 +10,7 @@ class Postfix < Formula
   revision 1
 
   depends_on "berkeley-db@4" => :build
- # depends_on "icu4c"
+  depends_on "icu4c"
   depends_on "mariadb@10.6"
   depends_on "openssl@1.1"
   depends_on "pcre2"
@@ -50,7 +50,6 @@ class Postfix < Formula
 
     auxlibsmysql =%W[
       AUXLIBS_MYSQL=-L#{Formula["mariadb@10.6"].opt_prefix}/lib
-      -R#{Formula["mariadb@10.6"].opt_prefix}/lib
       -lmysqlclient
       -lz
       -lm
