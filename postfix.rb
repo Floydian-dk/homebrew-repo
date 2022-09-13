@@ -1,18 +1,19 @@
+# Postfix formula by FLOYD Interactive
 class Postfix < Formula
   desc "Fast and robust mail transfer agent, Custom version for FLOYD Interactive"
-  homepage "http://www.postfix.org"
+  homepage "https://www.postfix.org"
   # Should only be updated if the new version is announced on the homepage, http://www.postfix.org
-  url "https://de.postfix.org/ftpmirror/official/postfix-3.6.6.tar.gz"
-  mirror "ftp://ftp.pca.dfn.de/pub/tools/net/postfix/official/postfix-3.6.6.tar.gz"
-  sha256 "098a714f410468efe26e2191dc8f31cba4507d5bf488f56f9eb5545e3686f0d6"
-  license "IBMPL-1 EPL-2"
+  url "https://de.postfix.org/ftpmirror/official/postfix-3.7.2.tar.gz"
+  mirror "ftp://ftp.pca.dfn.de/pub/tools/net/postfix/official/postfix-3.7.2.tar.gz"
+  sha256 "3785f76c2924a02873c0be0f0cd124a9166fc1aaf77ea2a06bd4ad795a6ed416"
+  license any_of: ["IPL-1.0", "EPL-2.0"]
+  revision 1
 
-  depends_on "openssl@1.1"
-  depends_on "mariadb@10.6"
-  depends_on "pcre2"
-  depends_on "icu4c"
   depends_on "berkeley-db@4" => :build
-
+  depends_on "icu4c"
+  depends_on "mariadb@10.6"
+  depends_on "openssl@1.1"
+  depends_on "pcre2"
 
   def install
 
@@ -22,35 +23,35 @@ class Postfix < Formula
       s.gsub! "$install_root$config_directory", "$config_directory"
       s.gsub! "$install_root$command_directory", "$command_directory"
       s.gsub! "$install_root$shlib_directory", "$shlib_directory"
-      #s.gsub! "$install_root$daemon_directory", "$daemon_directory"
+      # s.gsub! "$install_root$daemon_directory", "$daemon_directory"
     end
 
-    ccargs = %w[
-      CCARGS='-DUSE_SASL_AUTH
-      -DDEF_SERVER_SASL_TYPE=\\\"dovecot\\\"
-      -DDEF_COMMAND_DIR=\\\"/usr/local/sbin\\\"
-      -DDEF_CONFIG_DIR=\\\"/usr/local/Server/Mail/Config/postfix\\\"
-      -DDEF_DAEMON_DIR=\\\"/usr/local/libexec/postfix\\\"
-      -DUSE_TLS
+    ccargs = %W[
+      CCARGS=-DUSE_SASL_AUTH
+      -DDEF_SERVER_SASL_TYPE=dovecot
+      -DDEF_COMMAND_DIR=/usr/local/sbin
+      -DDEF_CONFIG_DIR=/usr/local/Server/Mail/Config/postfix
+      -DDEF_DAEMON_DIR=/usr/local/libexec/postfix
       -DHAS_PCRE -I/usr/local/include
+      -DUSE_TLS
       -DHAS_SSL -I#{Formula["openssl@1.1"].opt_prefix}
-      -DHAS_MYSQL -I#{Formula["mariadb@10.6"].opt_prefix}/include/mysql'
+      -DHAS_MYSQL -I#{Formula["mariadb@10.6"].opt_prefix}/include/mysql
     ]
 
     auxlibspcre =%W[
-      AUXLIBS_PCRE='-L/usr/local/lib
-      -lpcre'
+      AUXLIBS_PCRE=-L/usr/local/lib
+      -lpcre
     ]
 
     auxlibsmysql =%W[
-      AUXLIBS_MYSQL='-L#{Formula["mariadb@10.6"].opt_prefix}/lib
+      AUXLIBS_MYSQL=-L#{Formula["mariadb@10.6"].opt_prefix}/lib
       -R#{Formula["mariadb@10.6"].opt_prefix}/lib
       -lmysqlclient
       -lz
-      -lm'
+      -lm
     ]
 
-    args5 = %W[
+    postargs = %W[
         -non-interactive
         install_root=#{prefix}
         tempdir=#{buildpath}
@@ -69,27 +70,20 @@ class Postfix < Formula
         config_directory=\"#{etc}/postfix\"
     ]
 
-    system "make",
-#    "-f",
-#    "Makefile.init",
-    "makefiles",
-    "CC=#{ENV.cc}",
-    "CCARGS=-DDEF_CONFIG_DIR=\\\"/usr/local/Server/Mail/Config/postfix\\\" -DUSE_SASL_AUTH -DDEF_SERVER_SASL_TYPE=\\\"dovecot\\\" -DDEF_COMMAND_DIR=\\\"/usr/local/sbin\\\" -DDEF_DAEMON_DIR=\\\"/usr/local/libexec/postfix\\\" -DUSE_TLS -DHAS_PCRE -I/usr/local/include -DHAS_SSL -I/usr/local/opt/openssl@1.1 -DHAS_MYSQL -I#{Formula["mariadb@10.6"].opt_prefix}/include/mysql -I/usr/local/include",
-    "AUXLIBS=-ldb",
-    "AUXLIBS_PCRE=-L/usr/local/lib -lpcre",
-    "AUXLIBS_MYSQL=-L#{Formula["mariadb@10.6"].opt_prefix}/lib -R#{Formula["mariadb@10.6"].opt_prefix}/lib -lmysqlclient -lz -lm"
+    system "make", "makefiles", "CC=#{ENV.cc}", ccargs, auxlibspcre, auxlibsmysql
     system "make"
 
-    system "/bin/sh", "postfix-install", *args5
-    #system "make", "install", *args3
-
+    system "/bin/sh", "postfix-install", *postargs
+    # system "make", "install", *args3
   end
-
 
   def caveats
     <<~EOS
       For Postfix to work you may have to create a postfix user
       and group depending on your configuration file options.
     EOS
+  end
+
+  test do
   end
 end
