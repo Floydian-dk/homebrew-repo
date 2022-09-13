@@ -10,7 +10,7 @@ class Postfix < Formula
   revision 1
 
   depends_on "berkeley-db@4" => :build
-  depends_on "icu4c"
+ # depends_on "icu4c"
   depends_on "mariadb@10.6"
   depends_on "openssl@1.1"
   depends_on "pcre2"
@@ -32,15 +32,20 @@ class Postfix < Formula
       -DDEF_COMMAND_DIR=/usr/local/sbin
       -DDEF_CONFIG_DIR=/usr/local/Server/Mail/Config/postfix
       -DDEF_DAEMON_DIR=/usr/local/libexec/postfix
-      -DHAS_PCRE -I/usr/local/include
+      -DHAS_PCRE=2 -I/usr/local/include
       -DUSE_TLS
       -DHAS_SSL -I#{Formula["openssl@1.1"].opt_prefix}
       -DHAS_MYSQL -I#{Formula["mariadb@10.6"].opt_prefix}/include/mysql
+      -DHAS_DB -I#{Formula["berkeley-db@4"].opt_prefix}/include
+    ]
+
+    auxlibs = %W[
+      AUXLIBS=-L#{Formula["berkeley-db@4"].opt_prefix}/lib -ldb
     ]
 
     auxlibspcre =%W[
       AUXLIBS_PCRE=-L/usr/local/lib
-      -lpcre
+      -lpcre2-8
     ]
 
     auxlibsmysql =%W[
@@ -70,7 +75,7 @@ class Postfix < Formula
         config_directory=\"#{etc}/postfix\"
     ]
 
-    system "make", "makefiles", "CC=#{ENV.cc}", ccargs, auxlibspcre, auxlibsmysql
+    system "make", "makefiles", "CC=#{ENV.cc}", ccargs, auxlibs, auxlibspcre, auxlibsmysql
     system "make"
 
     system "/bin/sh", "postfix-install", *postargs
