@@ -14,11 +14,11 @@ class Node < Formula
 
   depends_on "pkg-config" => :build
   depends_on "floydian-dk/repo/python@3.10" => :build
-  depends_on "brotli"
-  depends_on "c-ares"
-  depends_on "icu4c"
-  depends_on "libnghttp2"
-  depends_on "libuv"
+  #depends_on "brotli"
+  #depends_on "c-ares"
+  #depends_on "icu4c"
+  #depends_on "libnghttp2"
+  #depends_on "libuv"
   #depends_on "openssl@1.1"
 
   uses_from_macos "python", since: :catalina
