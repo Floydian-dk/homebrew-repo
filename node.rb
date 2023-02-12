@@ -19,7 +19,7 @@ class Node < Formula
   depends_on "icu4c"
   depends_on "libnghttp2"
   depends_on "libuv"
-  depends_on "floydian-dk/repo/openssl@1.1"
+  #depends_on "openssl@1.1"
 
   uses_from_macos "python", since: :catalina
   uses_from_macos "zlib"
@@ -39,10 +39,10 @@ class Node < Formula
 
   # We track major/minor from upstream Node releases.
   # We will accept *important* npm patch releases when necessary.
-  #resource "npm" do
-  #  url "https://registry.npmjs.org/npm/-/npm-8.19.2.tgz"
-  #  sha256 "439fb2276f7039d2fba2739e361006f3bc25d6a6b3f88c1edb4d28ab5a7eb3f7"
-  #end
+  resource "npm" do
+    url "https://registry.npmjs.org/npm/-/npm-8.19.2.tgz"
+    sha256 "439fb2276f7039d2fba2739e361006f3bc25d6a6b3f88c1edb4d28ab5a7eb3f7"
+  end
 
   def install
     ENV.llvm_clang if OS.mac? && (DevelopmentTools.clang_build_version <= 1100)
@@ -54,6 +54,8 @@ class Node < Formula
     # installation from tarball for better packaging control.
     args = %W[
       --prefix=#{prefix}
+      --without-npm
+      --without-corepack
       --with-intl=system-icu
       --shared-libuv
       --shared-nghttp2
@@ -65,8 +67,8 @@ class Node < Formula
       --shared-libuv-libpath=#{Formula["libuv"].lib}
       --shared-nghttp2-includes=#{Formula["libnghttp2"].include}
       --shared-nghttp2-libpath=#{Formula["libnghttp2"].lib}
-      --shared-openssl-includes=#{Formula["floydian-dk/repo/openssl@1.1"].include}
-      --shared-openssl-libpath=#{Formula["floydian-dk/repo/openssl@1.1"].lib}
+      --shared-openssl-includes=#{Formula["openssl@1.1"].include}
+      --shared-openssl-libpath=#{Formula["openssl@1.1"].lib}
       --shared-brotli-includes=#{Formula["brotli"].include}
       --shared-brotli-libpath=#{Formula["brotli"].lib}
       --shared-cares-includes=#{Formula["c-ares"].include}
@@ -87,8 +89,8 @@ class Node < Formula
     # Allow npm to find Node before installation has completed.
     ENV.prepend_path "PATH", bin
 
-    #bootstrap = buildpath/"npm_bootstrap"
-    #bootstrap.install resource("npm")
+    bootstrap = buildpath/"npm_bootstrap"
+    bootstrap.install resource("npm")
     # These dirs must exists before npm install.
     mkdir_p libexec/"lib"
     system "node", bootstrap/"bin/npm-cli.js", "install", "-ddd", "--global",
@@ -97,11 +99,11 @@ class Node < Formula
     # The `package.json` stores integrity information about the above passed
     # in `cached_download` npm resource, which breaks `npm -g outdated npm`.
     # This copies back over the vanilla `package.json` to fix this issue.
-    #cp bootstrap/"package.json", libexec/"lib/node_modules/npm"
+    cp bootstrap/"package.json", libexec/"lib/node_modules/npm"
     # These symlinks are never used & they've caused issues in the past.
-    #rm_rf libexec/"share"
+    rm_rf libexec/"share"
 
-    #bash_completion.install bootstrap/"lib/utils/completion.sh" => "npm"
+    bash_completion.install bootstrap/"lib/utils/completion.sh" => "npm"
   end
 
   def post_install
