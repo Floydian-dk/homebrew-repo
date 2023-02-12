@@ -8,7 +8,7 @@ class BaculaFd < Formula
     url :stable
   end
 
-  depends_on "openssl@1.1"
+  depends_on "floydian-dk/repo/openssl@1.1"
   depends_on "readline"
 
   uses_from_macos "zlib"
