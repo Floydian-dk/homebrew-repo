@@ -22,7 +22,7 @@ class Llvm < Formula
   # See: Homebrew/homebrew-core/issues/35513
   depends_on "cmake" => :build
   depends_on "swig" => :build
-  depends_on "python@3.10"
+  depends_on "floydian-dk/repo/python@3.10"
   depends_on "six"
   depends_on "z3"
   depends_on "zstd"
