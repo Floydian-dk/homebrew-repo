@@ -19,7 +19,6 @@ class Node < Formula
   depends_on "icu4c"
   depends_on "libnghttp2"
   depends_on "libuv"
-  depends_on "floydian-dk/repo/openssl@1.1"
 
   uses_from_macos "python", since: :catalina
   uses_from_macos "zlib"
