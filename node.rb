@@ -14,18 +14,18 @@ class Node < Formula
 
   depends_on "pkg-config" => :build
   depends_on "floydian-dk/repo/python@3.10" => :build
-  #depends_on "brotli"
-  #depends_on "c-ares"
-  #depends_on "icu4c"
-  #depends_on "libnghttp2"
-  #depends_on "libuv"
-  #depends_on "openssl@1.1"
+  depends_on "brotli"
+  depends_on "c-ares"
+  depends_on "icu4c"
+  depends_on "libnghttp2"
+  depends_on "libuv"
+  depends_on "floydian-dk/repo/openssl@1.1"
 
   uses_from_macos "python", since: :catalina
   uses_from_macos "zlib"
 
   on_macos do
-    depends_on "llvm" => [:build, :test] if DevelopmentTools.clang_build_version <= 1100
+    depends_on "floydian-dk/repo/llvm" => [:build, :test] if DevelopmentTools.clang_build_version <= 1100
   end
 
   fails_with :clang do
