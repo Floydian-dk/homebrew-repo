@@ -7,13 +7,13 @@ class SphinxDoc < Formula
   sha256 "51026de0a9ff9fc13c05d74913ad66047e104f56a129ff73e174eb5c3ee794b5"
   license "BSD-2-Clause"
 
+
   keg_only <<~EOS
     this formula is mainly used internally by other formulae.
     Users are advised to use `pip` to install sphinx-doc
   EOS
 
   depends_on "floydian-dk/repo/docutils"
-  depends_on "floydian-dk/repo/pygments"
   depends_on "floydian-dk/repo/python@3.10"
 
   resource "alabaster" do
@@ -64,6 +64,11 @@ class SphinxDoc < Formula
   resource "packaging" do
     url "https://files.pythonhosted.org/packages/df/9e/d1a7217f69310c1db8fdf8ab396229f55a699ce34a203691794c5d1cad0c/packaging-21.3.tar.gz"
     sha256 "dd47c42927d89ab911e606518907cc2d3a1f38bbd026385970643f9c5b8ecfeb"
+  end
+
+  resource "Pygments" do
+    url "https://files.pythonhosted.org/packages/e0/ef/5905cd3642f2337d44143529c941cc3a02e5af16f0f65f81cbef7af452bb/Pygments-2.13.0.tar.gz"
+    sha256 "56a8508ae95f98e2b9bdf93a6be5ae3f7d8af858b43e02c5a2ff083726be40c1"
   end
 
   resource "pyparsing" do
