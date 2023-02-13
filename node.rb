@@ -51,8 +51,8 @@ class Node < Formula
       --shared-zlib
       --shared-brotli
       --shared-cares
-      --shared-libuv-includes=#{Formula["libuv"].include}
-      --shared-libuv-libpath=#{Formula["libuv"].lib}
+      --shared-libuv-includes=#{Formula["floydian-dk/repo/libuv"].include}
+      --shared-libuv-libpath=#{Formula["floydian-dk/repo/libuv"].lib}
       --shared-nghttp2-includes=#{Formula["libnghttp2"].include}
       --shared-nghttp2-libpath=#{Formula["libnghttp2"].lib}
       --shared-openssl-includes=#{Formula["floydian-dk/repo/openssl@1.1"].include}
