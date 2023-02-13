@@ -23,8 +23,8 @@ class Llvm < Formula
   depends_on "cmake" => :build
   depends_on "swig" => :build
   depends_on "floydian-dk/repo/python@3.10"
-  depends_on "six"
-  depends_on "z3"
+  depends_on "floydian-dk/repo/six"
+  depends_on "floydian-dk/repo/z3"
   depends_on "zstd"
 
   uses_from_macos "libedit"
