@@ -1,8 +1,9 @@
 class BaculaFd < Formula
   desc "Network backup solution"
   homepage "https://www.bacula.org/"
-  url "https://downloads.sourceforge.net/project/bacula/bacula/9.6.6/bacula-9.6.6.tar.gz"
-  sha256 "6286c975e3f4980c1b4b3bc81ab9cda9186708eb19515abe4dc0b9ed5e2c8281"
+  url "https://downloads.sourceforge.net/project/bacula/bacula/13.0.2/bacula-13.0.2.tar.gz"
+  sha256 "6e08bcbe6a4ab070e17e9e9c4e9bc4e944d2e5bd376521ca342c6fe96a20687d"
+  license "AGPL-3.0-only" => { with: "openvpn-openssl-exception" }
 
   livecheck do
     url :stable
@@ -38,8 +39,7 @@ class BaculaFd < Formula
     system "make", "install"
 
     # Avoid references to the Homebrew shims directory
-    inreplace Dir[prefix/"etc/bacula_config"],
-              HOMEBREW_SHIMS_PATH/"mac/super/", ""
+    inreplace prefix/"etc/bacula_config", "#{Superenv.shims_path}/", ""
 
     (var/"lib/bacula").mkpath
   end
